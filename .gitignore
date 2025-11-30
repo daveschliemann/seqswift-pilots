@@ -1,0 +1,1 @@
+*.bin\n*.img\n*.zip\n*.gz\n*.so\nvenv/\n__pycache__/
