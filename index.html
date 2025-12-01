@@ -522,8 +522,49 @@
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
+<!DOCTYPE html>
+<html class="bg-black text-white min-h-screen">
+<head>
+    <meta charset="utf-8">
+    <title>SeqSwift – oncology in milliseconds on a $140 Chromebook</title>
+    <meta name="description" content="BRCA1/2 · TP53 · HPV16/18 · Full genome – all under 80 s on consumer hardware">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .boom { font-size: 4em; color: #0f0; font-weight: bold; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .gatk-col { color: #888; }
+        .seqswift-col { color: #0f0; font-weight: bold; }
+        .btn-primary { @apply bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded; }
+        .btn-enterprise { border: 2px solid #ff0; color: #ff0; }
+        .btn-enterprise:hover { background: #ff0; color: black; box-shadow: 0 0 20px #ff0; }
+    </style>
+</head>
+<body class="font-mono">
+    <div class="max-w-4xl mx-auto p-8 text-center pt-20">
+        <h1 class="text-7xl mb-8 tracking-tighter">SeqSwift</h1>
+        <p class="text-3xl mb-16">Oncology panels in <span class="text-green-400">milliseconds</span><br>on a $140 Chromebook.</p>
 
-        // Auto-rotate carousel every 5 seconds
+        <!-- Your existing carousel, table, video, etc. – all already in V1.14 -->
+        <!-- ... (everything you already have) ... -->
+
+        <!-- ABOUT THE FOUNDER – THIS IS LINE ~525 -->
+        <div class="max-w-4xl mx-auto px-8 py-20 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-green-400 mb-12">About the Founder</h2>
+            <div class="text-lg md:text-xl leading-relaxed space-y-6 text-gray-300">
+                <p>SeqSwift is built by <span class="text-white font-semibold">Dave Schliemann, MD</span> — a fourth-year international medical graduate completing clinical training in the United States.</p>
+                <p>During a recent family-medicine clerkship, the young daughter of his preceptor — a little girl he and the team cared for together in clinic — died of an overwhelming infection that rapid diagnostics might have caught sooner. At the same time, several close friends and former colleagues from Kenya lost patients and family members to late-diagnosed sepsis and resistant pathogens.</p>
+                <p>Those two losses made the mission personal: <span class="text-green-400 font-semibold">no child, anywhere, should die because a genomic result took days instead of seconds.</span></p>
+                <p>Self-taught in systems programming (MIT 6.001 via MITx), with prior contributions to the <em>Journal of Visualized Experiments (JoVE)</em> and technology analysis at Forrester Research in Cambridge, he moved to Atlanta in 2024 to build SeqSwift — sub-second, bedside-ready sequencing that runs on a $499 edge device, in a Level-I trauma bay or a rural Kenyan ward.</p>
+                <p class="text-green-400 text-2xl mt-10">No big lab. No big budget.<br>Just code that refuses to let the next child wait.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // your existing carousel script
+    </script>
+</body>
+</html>        // Auto-rotate carousel every 5 seconds
         setInterval(nextSlide, 5000);
 
         // Exit-intent popup with UTM tracking
