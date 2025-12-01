@@ -1,10 +1,25 @@
-<!DOCTYPE html>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: #000<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeqSwift — Replace GATK/BWA in 0.0069 s | Patent-Pending NGS on $140 Chromebook</title>
     <meta name="description" content="Full human genome in 80 s. HPV oncology in 0.0069 s. No cloud, no cluster, no GATK. Legacy NGS replaced. Download verifiable pilot now.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,7 +30,7 @@
         body {
             background: #000;
             color: #0ff;
-            font-family: 'Courier New', monospace;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -46,10 +61,12 @@
 
         h1 {
             font-size: 2.5em;
+            font-weight: 300;
             margin: 40px 0 20px;
             text-align: center;
             color: #0ff;
-            text-shadow: 0 0 20px #0ff;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+            letter-spacing: -0.5px;
         }
 
         .tagline {
@@ -90,9 +107,9 @@
 
         .carousel-slide .stats {
             font-size: 3em;
-            color: #ff0;
+            color: #0ff;
             margin: 20px 0;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .carousel-slide .comparison {
@@ -102,11 +119,14 @@
         }
 
         .carousel-slide .boom {
-            font-size: 4em;
+            font-size: 5em;
             color: #f00;
-            text-shadow: 0 0 20px #f00;
+            font-weight: 900;
+            text-shadow: 0 0 40px rgba(255, 0, 0, 0.9), 0 0 20px rgba(255, 0, 0, 1);
             margin: 20px 0;
             animation: boom 1s ease-in-out infinite;
+            -webkit-text-stroke: 2px #f00;
+            letter-spacing: 0.1em;
         }
 
         @keyframes boom {
@@ -221,7 +241,7 @@
         .btn {
             padding: 20px 40px;
             font-size: 1.3em;
-            font-family: 'Courier New', monospace;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             border: 2px solid #0ff;
             background: transparent;
             color: #0ff;
@@ -231,6 +251,7 @@
             display: block;
             transition: all 0.3s;
             text-align: center;
+            font-weight: 400;
         }
 
         .btn:hover {
@@ -252,13 +273,13 @@
         }
 
         .btn-enterprise {
-            border-color: #ff0;
-            color: #ff0;
+            border-color: #0ff;
+            color: #0ff;
         }
 
         .btn-enterprise:hover {
-            background: #ff0;
-            box-shadow: 0 0 20px #ff0;
+            background: #0ff;
+            box-shadow: 0 0 20px #0ff;
         }
 
         .passphrase-note {
@@ -384,7 +405,7 @@
 </head>
 <body>
     <div class="scarcity-banner">
-        ⚠️ First 100 institutions get permanent free key — 73 remaining — license@seqswift.com
+        ⚠️ First 100 institutions get permanent free key — 73 remaining — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6cacfc5c3c8d5c3e6d5c3d7d5d1cfc0d288c5c9cb">[email&#160;protected]</a>
     </div>
 
     <div class="container">
@@ -463,7 +484,7 @@
                     <div style="color: #888; margin-top: 10px;">HBB Samples</div>
                 </div>
                 <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
-                    <div style="font-size: 3em; color: #ff0;">~9,000</div>
+                    <div style="font-size: 3em; color: #0ff;">~9,000</div>
                     <div style="color: #888; margin-top: 10px;">Reads Processed</div>
                 </div>
                 <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
@@ -471,7 +492,7 @@
                     <div style="color: #888; margin-top: 10px;">Total Time</div>
                 </div>
                 <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
-                    <div style="font-size: 3em; color: #f0f;">~9</div>
+                    <div style="font-size: 3em; color: #fff;">~9</div>
                     <div style="color: #888; margin-top: 10px;">Variants Detected</div>
                 </div>
             </div>
@@ -502,14 +523,14 @@
                 <p style="text-align: center; color: #888; margin-top: 20px; font-size: 0.95em;">
                     <span style="color: #0f0; font-weight: bold; cursor: help;" title="That's ~185x faster for cohorts—local, encrypted, no cloud fees">~185x faster</span> • 
                     <span style="color: #0ff; cursor: help;" title="489 MB RAM vs 128 GB for GATK">489 MB RAM</span> • 
-                    <span style="color: #ff0; cursor: help;" title="Runs on $140 Chromebook vs $80k server">$140 hardware</span> • 
+                    <span style="color: #fff; cursor: help;" title="Runs on $140 Chromebook vs $80k server">$140 hardware</span> • 
                     Perfect for sickle cell screening at scale
                 </p>
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.14-crostini-killer" style="display: inline-block; padding: 15px 40px; background: #0f0; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 1.2em; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px #0f0'" onmouseout="this.style.boxShadow='none'">
-                    See the Benchmark Run →
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases" style="display: inline-block; padding: 15px 40px; background: #0f0; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 1.2em; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px #0f0'" onmouseout="this.style.boxShadow='none'">
+                    Download Pilot & See Benchmarks →
                 </a>
             </div>
         </div>
@@ -595,29 +616,29 @@
         </div>
 
         <div class="cta-section">
-            <h3>Download v1.14 Pilot (Full GRCh38 Support)</h3>
+            <h3>Download Pilot (Full GRCh38 Support)</h3>
             <p style="color: #fff; margin-bottom: 20px;">
                 Pure Python • No GPU • No cloud • Patent pending • Free forever
             </p>
 
             <div class="cta-buttons">
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.14-crostini-killer" class="btn btn-primary" target="_blank">
-                    Download v1.14 Pilot (Full GRCh38 in 25 min)
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases" class="btn btn-primary" target="_blank">
+                    Download Pilot Assets
                 </a>
                 
                 <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn" target="_blank">
                     Request Pre-Decrypted Pilot (Institutional License)
                 </a>
 
-                <a href="mailto:license@seqswift.com?subject=Enterprise%20License%20Inquiry&utm_source=cta&utm_medium=button&utm_campaign=enterprise" class="btn btn-enterprise">
+                <a href="/cdn-cgi/l/email-protection#1d71747e78736e785d6e786c6e6a747b69337e7270226e687f77787e6920587369786f6d6f746e78382f2d51747e78736e78382f2d54736c68746f643b686970426e72686f7e78207e697c3b68697042707879746870207f68696972733b686970427e7c706d7c747a7320787369786f6d6f746e78" class="btn btn-enterprise">
                     $99/mo Enterprise Key (Unlimited Runs)
                 </a>
             </div>
 
             <p class="passphrase-note">
-                First 100 institutions get permanent free key • v1.14: Full GRCh38 in 25 min<br>
-                99.62% SNV F1 on GIAB HG002 • Passphrase: license@seqswift.com<br>
-                <a href="https://patents.google.com/patent/US63187188" target="_blank">Patent Pending: 63/187,188</a>
+                First 100 institutions get permanent free key<br>
+                99.62% SNV F1 on GIAB HG002 • Passphrase: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea8683898f84998faa998f9b999d838c9ec4898587">[email&#160;protected]</a><br>
+                <span style="color: #888;">Provisional Patent Pending: 63/187,188</span>
             </p>
         </div>
 
@@ -645,17 +666,17 @@
         </div>
 
         <footer>
-            <p>SeqSwift © 2025 | <a href="mailto:license@seqswift.com?utm_source=footer&utm_medium=email&utm_campaign=pilot">license@seqswift.com</a></p>
-            <p>When seconds matter, legacy tools fail. SeqSwift delivers.</p>
+            <p>SeqSwift © 2025 | <a href="/cdn-cgi/l/email-protection#34585d57515a47517447514547435d52401a575b590b4140596b475b4146575109525b5b405146124140596b5951505d4159095159555d58124140596b57555944555d535a09445d585b40"><span class="__cf_email__" data-cfemail="88e4e1ebede6fbedc8fbedf9fbffe1eefca6ebe7e5">[email&#160;protected]</span></a></p>
+            <p>Sepsis doesn't wait to kill. SeqSwift saves lives before the physician blinks.</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
                 <a href="https://github.com/daveschliemann/seqswift-pilots/releases" target="_blank">GitHub</a> | 
-                <a href="https://patents.google.com/patent/US63187188" target="_blank">Patent</a> | 
+                <span style="color: #666;">Provisional Patent: 63/187,188</span> | 
                 <a href="https://twitter.com/seqswift" target="_blank">X/Twitter</a>
             </p>
         </footer>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
@@ -683,8 +704,8 @@
         document.addEventListener('mouseleave', (e) => {
             if (e.clientY <= 0 && !exitIntentShown) {
                 exitIntentShown = true;
-                if (confirm('Leaving? GATK just took 6 hours. SeqSwift would have taken 0.0069 s.\n\nDownload v1.14 pilot before you go?\n\nClick OK to email license@seqswift.com')) {
-                    window.location.href = 'mailto:license@seqswift.com?subject=Exit%20Intent%20-%20v1.14%20Pilot%20Request&utm_source=exit_intent&utm_medium=popup&utm_campaign=pilot';
+                if (confirm('Leaving? GATK just took 6 hours. SeqSwift would have taken 0.0069 s.\n\nDownload pilot before you go?\n\nClick OK to email license@seqswift.com')) {
+                    window.location.href = 'mailto:license@seqswift.com?subject=Exit%20Intent%20-%20Pilot%20Request&utm_source=exit_intent&utm_medium=popup&utm_campaign=pilot';
                 }
             }
         });
@@ -696,5 +717,5 @@
             });
         });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a73cc659c47b073',t:'MTc2NDYwNDgzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
