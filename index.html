@@ -389,6 +389,78 @@
             </div>
         </div>
 
+        <div style="max-width: 900px; margin: 60px auto; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border: 3px solid #0f0; border-radius: 12px; padding: 40px; box-shadow: 0 0 40px rgba(0, 255, 0, 0.4);">
+            <h2 style="text-align: center; font-size: 2.5em; color: #0f0; margin-bottom: 10px; text-shadow: 0 0 20px #0f0;">
+                Screen 1,000 Patients in 54 Seconds
+            </h2>
+            <p style="text-align: center; font-size: 1.5em; color: #fff; margin-bottom: 30px;">
+                GATK Who?
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
+                    <div style="font-size: 3em; color: #0ff;">1,000</div>
+                    <div style="color: #888; margin-top: 10px;">HBB Samples</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
+                    <div style="font-size: 3em; color: #ff0;">~9,000</div>
+                    <div style="color: #888; margin-top: 10px;">Reads Processed</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
+                    <div style="font-size: 3em; color: #0f0;">54s</div>
+                    <div style="color: #888; margin-top: 10px;">Total Time</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #111; border-radius: 8px; border: 1px solid #333;">
+                    <div style="font-size: 3em; color: #f0f;">~9</div>
+                    <div style="color: #888; margin-top: 10px;">Variants Detected</div>
+                </div>
+            </div>
+
+            <div style="background: #0a0a0a; padding: 30px; border-radius: 8px; margin-top: 30px; border: 1px solid #333;">
+                <h3 style="color: #0ff; text-align: center; margin-bottom: 20px; font-size: 1.5em;">SeqSwift vs GATK: Cohort Processing</h3>
+                
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="width: 120px; color: #0f0; font-weight: bold;">SeqSwift:</div>
+                        <div style="flex: 1; background: #222; border-radius: 4px; overflow: hidden; position: relative;">
+                            <div style="background: linear-gradient(90deg, #0f0, #0a0); width: 0.5%; height: 30px; display: flex; align-items: center; padding-left: 10px; animation: growBar 1s ease-out forwards;">
+                                <span style="color: #fff; font-size: 0.9em; white-space: nowrap; margin-left: 5px;">54 seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 120px; color: #f00; font-weight: bold;">GATK (est):</div>
+                        <div style="flex: 1; background: #222; border-radius: 4px; overflow: hidden; position: relative;">
+                            <div style="background: linear-gradient(90deg, #f00, #a00); width: 100%; height: 30px; display: flex; align-items: center; padding-left: 10px;">
+                                <span style="color: #fff; font-size: 0.9em;">10,000+ seconds (2.7+ hours)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="text-align: center; color: #888; margin-top: 20px; font-size: 0.95em;">
+                    <span style="color: #0f0; font-weight: bold; cursor: help;" title="That's ~185x faster for cohorts—local, encrypted, no cloud fees">~185x faster</span> • 
+                    <span style="color: #0ff; cursor: help;" title="489 MB RAM vs 128 GB for GATK">489 MB RAM</span> • 
+                    <span style="color: #ff0; cursor: help;" title="Runs on $140 Chromebook vs $80k server">$140 hardware</span> • 
+                    Perfect for sickle cell screening at scale
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" style="display: inline-block; padding: 15px 40px; background: #0f0; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 1.2em; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px #0f0'" onmouseout="this.style.boxShadow='none'">
+                    See the Benchmark Run →
+                </a>
+            </div>
+        </div>
+
+        <style>
+            @keyframes growBar {
+                from { width: 0%; }
+                to { width: 0.5%; }
+            }
+        </style>
+
         <div class="demo-video">
             <h3>This Is What Legacy NGS Looks Like Dying</h3>
             <div style="max-width: 800px; margin: 0 auto;">
@@ -418,6 +490,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>HBB Cohort (1,000 samples)</td>
+                        <td class="gatk-col">2.7+ hours (est)</td>
+                        <td class="seqswift-col">54 s</td>
+                    </tr>
                     <tr>
                         <td>HPV Oncology</td>
                         <td class="gatk-col">6 hours</td>
@@ -487,13 +564,12 @@
         <div class="specs">
             <p>
                 Pure Python • No GPU • No cloud • No Docker • 489 MB RAM peak<br>
-                Full GRCh38 support • Open-source core • Patent pending<br>
-                Runs on $140 Chromebook • Free forever
+                Full GRCh38 support • 1,000-sample cohorts in 54s • Open-source core • Patent pending<br>
+                Runs on $140 Chromebook • Perfect for sickle cell screening • Free forever
             </p>
         </div>
 
-        <footer>
-            <p>SeqSwift © 2025 | <a href="mailto:license@seqswift.com?utm_source=footer&utm_medium=email&utm_campaign=pilot" style="color: #0ff; text-decoration: none;">license@seqswift.com</a></p>
+; text-decoration: none;">license@seqswift.com</a></p>
             <p>In oncology, 6 hours can cost lives. SeqSwift takes 0.0069 s.</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
                 <a href="https://github.com/daveschliemann/seqswift-pilots/releases" target="_blank" style="color: #666; text-decoration: none;">GitHub</a> | 
@@ -522,49 +598,8 @@
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
-<!DOCTYPE html>
-<html class="bg-black text-white min-h-screen">
-<head>
-    <meta charset="utf-8">
-    <title>SeqSwift – oncology in milliseconds on a $140 Chromebook</title>
-    <meta name="description" content="BRCA1/2 · TP53 · HPV16/18 · Full genome – all under 80 s on consumer hardware">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .boom { font-size: 4em; color: #0f0; font-weight: bold; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
-        .gatk-col { color: #888; }
-        .seqswift-col { color: #0f0; font-weight: bold; }
-        .btn-primary { @apply bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded; }
-        .btn-enterprise { border: 2px solid #ff0; color: #ff0; }
-        .btn-enterprise:hover { background: #ff0; color: black; box-shadow: 0 0 20px #ff0; }
-    </style>
-</head>
-<body class="font-mono">
-    <div class="max-w-4xl mx-auto p-8 text-center pt-20">
-        <h1 class="text-7xl mb-8 tracking-tighter">SeqSwift</h1>
-        <p class="text-3xl mb-16">Oncology panels in <span class="text-green-400">milliseconds</span><br>on a $140 Chromebook.</p>
 
-        <!-- Your existing carousel, table, video, etc. – all already in V1.14 -->
-        <!-- ... (everything you already have) ... -->
-
-        <!-- ABOUT THE FOUNDER – THIS IS LINE ~525 -->
-        <div class="max-w-4xl mx-auto px-8 py-20 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-green-400 mb-12">About the Founder</h2>
-            <div class="text-lg md:text-xl leading-relaxed space-y-6 text-gray-300">
-                <p>SeqSwift is built by <span class="text-white font-semibold">Dave Schliemann, MD</span> — a fourth-year international medical graduate completing clinical training in the United States.</p>
-                <p>During a recent family-medicine clerkship, the young daughter of his preceptor — a little girl he and the team cared for together in clinic — died of an overwhelming infection that rapid diagnostics might have caught sooner. At the same time, several close friends and former colleagues from Kenya lost patients and family members to late-diagnosed sepsis and resistant pathogens.</p>
-                <p>Those two losses made the mission personal: <span class="text-green-400 font-semibold">no child, anywhere, should die because a genomic result took days instead of seconds.</span></p>
-                <p>Self-taught in systems programming (MIT 6.001 via MITx), with prior contributions to the <em>Journal of Visualized Experiments (JoVE)</em> and technology analysis at Forrester Research in Cambridge, he moved to Atlanta in 2024 to build SeqSwift — sub-second, bedside-ready sequencing that runs on a $499 edge device, in a Level-I trauma bay or a rural Kenyan ward.</p>
-                <p class="text-green-400 text-2xl mt-10">No big lab. No big budget.<br>Just code that refuses to let the next child wait.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // your existing carousel script
-    </script>
-</body>
-</html>        // Auto-rotate carousel every 5 seconds
+        // Auto-rotate carousel every 5 seconds
         setInterval(nextSlide, 5000);
 
         // Exit-intent popup with UTM tracking
