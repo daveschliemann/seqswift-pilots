@@ -146,17 +146,6 @@
             color: #0ff;
         }
 
-        .video-placeholder {
-            background: #111;
-            border: 2px solid #0ff;
-            padding: 60px;
-            font-size: 1.5em;
-            color: #fff;
-            border-radius: 8px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
         .comparison-table {
             margin: 60px auto;
             max-width: 900px;
@@ -278,6 +267,15 @@
             color: #888;
         }
 
+        .passphrase-note a {
+            color: #0ff;
+            text-decoration: none;
+        }
+
+        .passphrase-note a:hover {
+            text-decoration: underline;
+        }
+
         .specs {
             margin: 40px auto;
             max-width: 800px;
@@ -286,12 +284,62 @@
             color: #888;
         }
 
+        .about-founder {
+            margin: 80px auto;
+            max-width: 900px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 2px solid #0ff;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .about-founder h2 {
+            font-size: 2.5em;
+            color: #0f0;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px #0f0;
+        }
+
+        .about-founder p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .about-founder .highlight {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .about-founder .mission {
+            color: #0f0;
+            font-weight: bold;
+        }
+
+        .about-founder .closing {
+            color: #0f0;
+            font-size: 1.5em;
+            margin-top: 40px;
+            line-height: 1.6;
+        }
+
         footer {
             margin-top: 80px;
             padding: 40px 20px;
             text-align: center;
             border-top: 1px solid #333;
             color: #666;
+        }
+
+        footer a {
+            color: #0ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -318,6 +366,18 @@
             th, td {
                 padding: 12px;
                 font-size: 0.9em;
+            }
+
+            .about-founder {
+                padding: 40px 20px;
+            }
+
+            .about-founder h2 {
+                font-size: 2em;
+            }
+
+            .about-founder p {
+                font-size: 1em;
             }
         }
     </style>
@@ -448,7 +508,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" style="display: inline-block; padding: 15px 40px; background: #0f0; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 1.2em; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px #0f0'" onmouseout="this.style.boxShadow='none'">
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.14-crostini-killer" style="display: inline-block; padding: 15px 40px; background: #0f0; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 1.2em; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px #0f0'" onmouseout="this.style.boxShadow='none'">
                     See the Benchmark Run →
                 </a>
             </div>
@@ -535,14 +595,14 @@
         </div>
 
         <div class="cta-section">
-            <h3>Download v1.13 Pilot (Full GRCh38 Support)</h3>
+            <h3>Download v1.14 Pilot (Full GRCh38 Support)</h3>
             <p style="color: #fff; margin-bottom: 20px;">
                 Pure Python • No GPU • No cloud • Patent pending • Free forever
             </p>
 
             <div class="cta-buttons">
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn btn-primary" target="_blank">
-                    Download v1.13 Pilot (Full GRCh38 in 25 min)
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.14-crostini-killer" class="btn btn-primary" target="_blank">
+                    Download v1.14 Pilot (Full GRCh38 in 25 min)
                 </a>
                 
                 <a href="https://forms.gle/YOUR_GOOGLE_FORM" class="btn" target="_blank">
@@ -555,9 +615,9 @@
             </div>
 
             <p class="passphrase-note">
-                First 100 institutions get permanent free key • v1.13: Full GRCh38 in 25 min<br>
+                First 100 institutions get permanent free key • v1.14: Full GRCh38 in 25 min<br>
                 99.62% SNV F1 on GIAB HG002 • Passphrase: license@seqswift.com<br>
-                <a href="https://patents.google.com/patent/US63187188" target="_blank" style="color: #0ff; text-decoration: none;">Patent Pending: 63/187,188</a>
+                <a href="https://patents.google.com/patent/US63187188" target="_blank">Patent Pending: 63/187,188</a>
             </p>
         </div>
 
@@ -569,12 +629,28 @@
             </p>
         </div>
 
-; text-decoration: none;">license@seqswift.com</a></p>
-            <p>In oncology, 6 hours can cost lives. SeqSwift takes 0.0069 s.</p>
+        <div class="about-founder">
+            <h2>About the Founder</h2>
+            <div>
+                <p>SeqSwift is built by <span class="highlight">Dave Schliemann, MD</span> — a fourth-year international medical graduate completing clinical training in the United States.</p>
+                
+                <p>During a recent family-medicine clerkship, the young daughter of his preceptor — a little girl he and the team cared for together in clinic — died of an overwhelming infection that rapid diagnostics might have caught sooner. At the same time, several close friends and former colleagues from Kenya lost patients and family members to late-diagnosed sepsis and resistant pathogens.</p>
+                
+                <p>Those two losses made the mission personal: <span class="mission">no child, anywhere, should die because a genomic result took days instead of seconds.</span></p>
+                
+                <p>Self-taught in systems programming (MIT 6.001 via MITx), with prior contributions to the <em>Journal of Visualized Experiments (JoVE)</em> and technology analysis at Forrester Research in Cambridge, he moved to Atlanta in 2024 to build SeqSwift — sub-second, bedside-ready sequencing that runs on a $499 edge device, in a Level-I trauma bay or a rural Kenyan ward.</p>
+                
+                <p class="closing">No big lab. No big budget.<br>Just code that refuses to let the next child wait.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>SeqSwift © 2025 | <a href="mailto:license@seqswift.com?utm_source=footer&utm_medium=email&utm_campaign=pilot">license@seqswift.com</a></p>
+            <p>When seconds matter, legacy tools fail. SeqSwift delivers.</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases" target="_blank" style="color: #666; text-decoration: none;">GitHub</a> | 
-                <a href="https://patents.google.com/patent/US63187188" target="_blank" style="color: #666; text-decoration: none;">Patent</a> | 
-                <a href="https://twitter.com/seqswift" target="_blank" style="color: #666; text-decoration: none;">X/Twitter</a>
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases" target="_blank">GitHub</a> | 
+                <a href="https://patents.google.com/patent/US63187188" target="_blank">Patent</a> | 
+                <a href="https://twitter.com/seqswift" target="_blank">X/Twitter</a>
             </p>
         </footer>
     </div>
@@ -607,28 +683,18 @@
         document.addEventListener('mouseleave', (e) => {
             if (e.clientY <= 0 && !exitIntentShown) {
                 exitIntentShown = true;
-                if (confirm('Leaving? GATK just took 6 hours. SeqSwift would have taken 0.0069 s.\n\nDownload v1.13 pilot before you go?\n\nClick OK to email license@seqswift.com')) {
-                    window.location.href = 'mailto:license@seqswift.com?subject=Exit%20Intent%20-%20v1.13%20Pilot%20Request&utm_source=exit_intent&utm_medium=popup&utm_campaign=pilot';
+                if (confirm('Leaving? GATK just took 6 hours. SeqSwift would have taken 0.0069 s.\n\nDownload v1.14 pilot before you go?\n\nClick OK to email license@seqswift.com')) {
+                    window.location.href = 'mailto:license@seqswift.com?subject=Exit%20Intent%20-%20v1.14%20Pilot%20Request&utm_source=exit_intent&utm_medium=popup&utm_campaign=pilot';
                 }
             }
         });
 
-        // Track button clicks (add Google Analytics event tracking here)
+        // Track button clicks
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                // Example: gtag('event', 'click', {'event_category': 'CTA', 'event_label': this.textContent});
                 console.log('CTA clicked:', this.textContent);
             });
         });
     </script>
-
-    <!-- Google Analytics - Replace with your GA4 Measurement ID -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script> -->
 </body>
 </html>
