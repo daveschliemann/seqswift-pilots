@@ -1,16 +1,4 @@
-<style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            background: #000<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,6 +13,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -401,11 +393,25 @@
                 font-size: 1em;
             }
         }
+
+        /* ——————— FINAL BLACKOUT FIX – PLACE THESE 9 LINES AS THE VERY LAST THING BEFORE </style> ——————— */
+        body, .container, .hero-proof, .carousel, .about-founder, .comparison-table, .demo-video, .cta-section, .specs, div, section {
+            background: #000 !important;
+            background-image: none !important;
+        }
+
+        .hero-proof, .about-founder {
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%) !important;
+        }
+
+        iframe, table, th, td, .carousel, .carousel-slide {
+            background: #000 !important;
+        }
     </style>
 </head>
 <body>
     <div class="scarcity-banner">
-        ⚠️ First 100 institutions get permanent free key — 73 remaining — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6cacfc5c3c8d5c3e6d5c3d7d5d1cfc0d288c5c9cb">[email&#160;protected]</a>
+        ⚠️ First 100 institutions get permanent free key — 73 remaining — license@seqswift.com
     </div>
 
     <div class="container">
@@ -630,14 +636,14 @@
                     Request Pre-Decrypted Pilot (Institutional License)
                 </a>
 
-                <a href="/cdn-cgi/l/email-protection#1d71747e78736e785d6e786c6e6a747b69337e7270226e687f77787e6920587369786f6d6f746e78382f2d51747e78736e78382f2d54736c68746f643b686970426e72686f7e78207e697c3b68697042707879746870207f68696972733b686970427e7c706d7c747a7320787369786f6d6f746e78" class="btn btn-enterprise">
+                <a href="mailto:license@seqswift.com?subject=Enterprise%20License%20Inquiry&utm_source=cta&utm_medium=button&utm_campaign=enterprise" class="btn btn-enterprise">
                     $99/mo Enterprise Key (Unlimited Runs)
                 </a>
             </div>
 
             <p class="passphrase-note">
                 First 100 institutions get permanent free key<br>
-                99.62% SNV F1 on GIAB HG002 • Passphrase: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea8683898f84998faa998f9b999d838c9ec4898587">[email&#160;protected]</a><br>
+                99.62% SNV F1 on GIAB HG002 • Passphrase: license@seqswift.com<br>
                 <span style="color: #888;">Provisional Patent Pending: 63/187,188</span>
             </p>
         </div>
@@ -666,7 +672,7 @@
         </div>
 
         <footer>
-            <p>SeqSwift © 2025 | <a href="/cdn-cgi/l/email-protection#34585d57515a47517447514547435d52401a575b590b4140596b475b4146575109525b5b405146124140596b5951505d4159095159555d58124140596b57555944555d535a09445d585b40"><span class="__cf_email__" data-cfemail="88e4e1ebede6fbedc8fbedf9fbffe1eefca6ebe7e5">[email&#160;protected]</span></a></p>
+            <p>SeqSwift © 2025 | <a href="mailto:license@seqswift.com?utm_source=footer&utm_medium=email&utm_campaign=pilot">license@seqswift.com</a></p>
             <p>Sepsis doesn't wait to kill. SeqSwift saves lives before the physician blinks.</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
                 <a href="https://github.com/daveschliemann/seqswift-pilots/releases" target="_blank">GitHub</a> | 
@@ -676,7 +682,7 @@
         </footer>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
@@ -717,5 +723,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a73cc659c47b073',t:'MTc2NDYwNDgzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
