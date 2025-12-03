@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +19,7 @@
             background: #000;
             color: #0ff;
             font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
-            line-height: 1.75; /* IMPROVED: bumped from 1.6 to 1.75 */
+            line-height: 1.75;
             overflow-x: hidden;
         }
 
@@ -50,7 +49,7 @@
 
         h1 {
             font-size: 2.5em;
-            font-weight: 300;
+            font-weight: 900;
             margin: 40px 0 20px;
             text-align: center;
             color: #0ff;
@@ -58,12 +57,18 @@
             letter-spacing: -0.5px;
         }
 
+        h1 .gatk-text {
+            font-weight: 900;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 0.8);
+            letter-spacing: 0.05em;
+        }
+
         .tagline {
             text-align: center;
             font-size: 1.3em;
             margin-bottom: 40px;
             color: #fff;
-            line-height: 1.6; /* IMPROVED: added explicit line-height */
+            line-height: 1.6;
         }
 
         .carousel {
@@ -106,7 +111,7 @@
             font-size: 1.2em;
             color: #fff;
             margin: 10px 0;
-            line-height: 1.6; /* IMPROVED: added line-height */
+            line-height: 1.6;
         }
 
         .carousel-slide .boom {
@@ -183,7 +188,7 @@
             padding: 20px;
             text-align: left;
             border-bottom: 1px solid #333;
-            line-height: 1.6; /* IMPROVED: added line-height to table cells */
+            line-height: 1.6;
         }
 
         th {
@@ -201,7 +206,6 @@
             border-bottom: none;
         }
 
-        /* IMPROVED: Added hover effect on table rows */
         tbody tr {
             transition: background 0.3s ease;
         }
@@ -217,6 +221,20 @@
         .seqswift-col {
             color: #0f0;
             font-weight: bold;
+        }
+
+        .institutions-banner {
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
         }
 
         .cta-section {
@@ -287,7 +305,7 @@
             margin-top: 15px;
             font-size: 0.9em;
             color: #888;
-            line-height: 1.8; /* IMPROVED: added line-height */
+            line-height: 1.8;
         }
 
         .passphrase-note a {
@@ -305,7 +323,7 @@
             text-align: center;
             font-size: 1.2em;
             color: #888;
-            line-height: 1.8; /* IMPROVED: added line-height */
+            line-height: 1.8;
         }
 
         .about-founder {
@@ -316,7 +334,7 @@
             border: 2px solid #0ff;
             border-radius: 12px;
             text-align: center;
-            opacity: 0; /* IMPROVED: fade-in animation */
+            opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
@@ -335,9 +353,9 @@
 
         .about-founder p {
             font-size: 1.2em;
-            line-height: 1.9; /* IMPROVED: increased from 1.8 to 1.9 */
+            line-height: 1.9;
             color: #ccc;
-            margin-bottom: 30px; /* IMPROVED: increased from 25px */
+            margin-bottom: 30px;
         }
 
         .about-founder .highlight {
@@ -363,7 +381,7 @@
             text-align: center;
             border-top: 1px solid #333;
             color: #666;
-            line-height: 1.8; /* IMPROVED: added line-height */
+            line-height: 1.8;
         }
 
         footer a {
@@ -375,7 +393,6 @@
             text-decoration: underline;
         }
 
-        /* IMPROVED: Fade-in animations for major sections */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -433,7 +450,7 @@
     </div>
 
     <div class="container">
-        <h1>GATK Takes 6 Hours. SeqSwift Takes 0.0069 Seconds.</h1>
+        <h1><span class="gatk-text">GATK</span> Takes 6 Hours. SeqSwift Takes 0.0069 Seconds.</h1>
         <p class="tagline">Full GRCh38 in 25 min. Chr22 in 58 s. On a $100 Chromebook. Your move, Broad Institute.</p>
 
         <div class="carousel fade-in">
@@ -639,6 +656,10 @@
             </table>
         </div>
 
+        <div class="institutions-banner">
+            ⚠️ First 100 institutions get permanent free key – 73 remaining ⚠️
+        </div>
+
         <div class="cta-section fade-in">
             <h3>Download Pilot (Full GRCh38 Support)</h3>
             <p style="color: #fff; margin-bottom: 20px;">
@@ -689,7 +710,7 @@
             </div>
         </div>
 
-        <footer>
+       <footer>
             <p>SeqSwift © 2025 | <a href="mailto:license@seqswift.com?utm_source=footer&utm_medium=email&utm_campaign=pilot">license@seqswift.com</a></p>
             <p>Sepsis doesn't wait. Legacy tools fail. SeqSwift saves lives before you can blink.</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
