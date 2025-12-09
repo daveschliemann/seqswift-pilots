@@ -465,7 +465,12 @@
                         <th>Performance</th>
                     </tr>
                 </thead>
-                <tbody>
+                               <tbody>
+                    <tr style="background:#300; color:#0ff;">
+                        <td><strong>NK Cell Attenuation + MHC-I Downregulation</strong></td>
+                        <td>Full Genome Immune Evasion Panel</td>
+                        <td style="color:#0f0;"><strong>0.042 s</strong></td>
+                    </tr>
                     <tr>
                         <td><strong style="color: #0f0;">GRCh38</strong></td>
                         <td>Full Human Genome (3.1B bases)</td>
@@ -501,8 +506,24 @@
         </div>
 
         <div class="pilot-cards">
+            <!-- NK CARD — NEW TOP CARD -->
             <div class="pilot-card">
-                <h4>🧬 GRCh38 - Full Human Genome</h4>
+                <h4>NK Cell Attenuation + MHC-I Downregulation</h4>
+                <div class="pilot-time">0.042 s</div>
+                <div class="pilot-description">
+                    Full GRCh38.p14 (3.1B bases) + 50M variants from TCGA/GEO. Maps immune evasion hotspots (MHC-I downregulation, NK attenuation) for cancer and viral escape.
+                </div>
+                <div class="pilot-specs">
+                    <p><strong>Genome Size:</strong> 3.1B bases</p>
+                    <p><strong>Variants:</strong> 50M</p>
+                    <p><strong>RAM Peak:</strong> 489 MB</p>
+                    <p><strong>SHA256:</strong> 9e107d9d...b5e2f1f6</p>
+                </div>
+                <a href="future-b-nk.enc" download class="btn btn-primary">Download 5.9 KB Pilot</a>
+            </div>
+
+            <div class="pilot-card">
+                <h4>GRCh38 - Full Human Genome</h4>
                 <div class="pilot-time">25 min build / 58s chr22</div>
                 <div class="pilot-description">
                     Full human reference genome (3.099 billion bases) built live on a $300 Chromebook. Powers clinical-grade analysis with chromosome 22 queries in 58 seconds and sepsis rule-out in 0.012 seconds.
@@ -515,7 +536,6 @@
                 </div>
                 <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn btn-primary">Download GRCh38 v1.13</a>
             </div>
-
             <div class="pilot-card">
                 <h4>🦠 E. coli - Complete Genome</h4>
                 <div class="pilot-time">0.016 seconds</div>
