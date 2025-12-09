@@ -14,7 +14,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: #000;
             color: #0ff;
@@ -391,7 +391,7 @@
             h1 {
                 font-size: 1.8em;
             }
-            
+
             .tagline {
                 font-size: 1em;
             }
@@ -441,11 +441,11 @@
         <div class="video-section">
             <h3>🎬 Watch SeqSwift Build GRCh38 Live on a Chromebook</h3>
             <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/8Gh9rmjArLw" 
-                    title="SeqSwift Demo" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                <iframe
+                    src="https://www.youtube.com/embed/8Gh9rmjArLw"
+                    title="SeqSwift Demo"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             </div>
@@ -455,7 +455,7 @@
         </div>
 
         <h2>📦 Available Pilots (v1.13 - Crostini Killer Edition)</h2>
-        
+
         <div class="pilots-table">
             <table>
                 <thead>
@@ -465,7 +465,12 @@
                         <th>Performance</th>
                     </tr>
                 </thead>
-                <tbody>
+                               <tbody>
+                    <tr style="background:#300; color:#0ff;">
+                        <td><strong>NK Cell Attenuation + MHC-I Downregulation</strong></td>
+                        <td>Full Genome Immune Evasion Panel</td>
+                        <td style="color:#0f0;"><strong>0.042 s</strong></td>
+                    </tr>
                     <tr>
                         <td><strong style="color: #0f0;">GRCh38</strong></td>
                         <td>Full Human Genome (3.1B bases)</td>
@@ -501,8 +506,23 @@
         </div>
 
         <div class="pilot-cards">
+            <!-- NK CARD — NEW TOP CARD -->
             <div class="pilot-card">
-                <h4>🧬 GRCh38 - Full Human Genome</h4>
+                <h4>NK Cell Attenuation + MHC-I Downregulation</h4>
+                <div class="pilot-time">0.042 s</div>
+                <div class="pilot-description">
+                    Full GRCh38.p14 (3.1B bases) + 50M variants from TCGA/GEO. Maps immune evasion hotspots (MHC-I downregulation, NK attenuation) for cancer and viral escape.
+                </div>
+                <div class="pilot-specs">
+                    <p><strong>Genome Size:</strong> 3.1B bases</p>
+                    <p><strong>Variants:</strong> 50M</p>
+                    <p><strong>RAM Peak:</strong> 489 MB</p>
+                    <p class="sha">SHA256:<br>47f3e04c9c6195dea32e2652db7599fb28078c5229dcc4e15d32d216aad7e1ae</p>                </div>
+                <a href="future-b-nk.enc" download class="btn btn-primary">Download 5.9 KB Pilot</a>
+            </div>
+
+            <div class="pilot-card">
+                <h4>GRCh38 - Full Human Genome</h4>
                 <div class="pilot-time">25 min build / 58s chr22</div>
                 <div class="pilot-description">
                     Full human reference genome (3.099 billion bases) built live on a $300 Chromebook. Powers clinical-grade analysis with chromosome 22 queries in 58 seconds and sepsis rule-out in 0.012 seconds.
@@ -515,7 +535,6 @@
                 </div>
                 <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn btn-primary">Download GRCh38 v1.13</a>
             </div>
-
             <div class="pilot-card">
                 <h4>🦠 E. coli - Complete Genome</h4>
                 <div class="pilot-time">0.016 seconds</div>
@@ -592,9 +611,37 @@
             </div>
         </div>
 
+        <h2 style="color:#f00; text-align:center; text-shadow:0 0 20px rgba(255,0,0,.6);">Pull the Pin — Pricing</h2>
+<div class="access-section" style="border-color: #f00; max-width: 900px; background:#300; border:3px solid #f00;">
+  <table style="width:100%; border-collapse:collapse; margin:3rem 0; font-size:1.1em;">
+    <tr>
+      <td style="border:1px solid #444; padding:1.5rem; text-align:center;">
+        <h3>Free Eval</h3>
+        <p style="color:#0f0; font-size:3rem; font-weight:bold;">First 10</p>
+        <p>Real use-case → passphrase</p>
+        <p><a href="mailto:license@seqswift.com?subject=decrypt" style="color:#0f0;">license@seqswift.com</a></p>
+      </td>
+      <td style="border:3px solid #0f0; padding:1.5rem; text-align:center; background:#001a00;">
+        <h3>Paid Pilot</h3>
+        <p style="color:#0f0; font-size:3rem; font-weight:bold;">$25,000</p>
+        <p>One-time · NDA · unlimited decrypts 2026</p>
+        <p><a href="mailto:license@seqswift.com?subject=pilot%20$25k" style="color:#0f0;">→ $25k license@seqswift.com</a></p>
+      </td>
+      <td style="border:1px solid #444; padding:1.5rem; text-align:center;">
+        <h3>Enterprise</h3>
+        <p style="color:#0f0; font-size:3rem; font-weight:bold;">Custom</p>
+        <p>Air-gapped · SOC-2 · on-prem</p>
+        <p><a href="mailto:license@seqswift.com?subject=enterprise" style="color:#0f0;">Contact</a></p>
+      </td>
+    </tr>
+  </table>
+  <p style="text-align:center; color:#f00; font-weight:bold; margin-top:20px; font-size:1.2em;">
+    Protected under Prov. Pat. 63/187,188—scale without the rust. First 10 sane detonators only.
+  </p>
+</div>
         <div class="access-section">
             <h2>🔐 How to Access</h2>
-            
+
             <h3>Step 1: Download</h3>
             <p style="color: #ccc; margin: 15px 0;">
                 Click on any pilot's download button above or visit the <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" style="color: #0ff;">v1.13 release page</a> directly.
@@ -663,28 +710,6 @@ cd SeqSwift_GRCh38_BOOM_v1.13<br>
             </div>
         </div>
 
-        <h2>🎁 Free Access Programs</h2>
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>1️⃣ First 100 Labs</h4>
-                <p style="color: #ccc; margin: 15px 0;">
-                    Free pilot access in exchange for testimonial/feedback. Help shape the future of genomic analysis.
-                </p>
-            </div>
-            <div class="feature-box">
-                <h4>2️⃣ Lifetime License Draw</h4>
-                <p style="color: #ccc; margin: 15px 0;">
-                    3 lifetime licenses randomly awarded weekly to users who provide feedback on their experience.
-                </p>
-            </div>
-            <div class="feature-box">
-                <h4>3️⃣ Academic/Non-Profit</h4>
-                <p style="color: #ccc; margin: 15px 0;">
-                    Educational licenses available on request for teaching and non-commercial research.
-                </p>
-            </div>
-        </div>
-
         <h2>⚡ Why SeqSwift?</h2>
         <div class="features-grid">
             <div class="feature-box">
@@ -717,73 +742,6 @@ cd SeqSwift_GRCh38_BOOM_v1.13<br>
                 </ul>
             </div>
         </div>
-        <section style="background: linear-gradient(135deg, #0a0a0a, #0f1f0f); border: 2px solid #00ff88; border-radius: 12px; padding: 60px 40px; margin: 80px 0; position: relative; overflow: hidden;">
-    
-    <!-- Animated background effect -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #00ff88 10px, #00ff88 20px);"></div>
-    
-    <div style="position: relative; z-index: 1;">
-        <h2 style="color: #00ff88; font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">🧬 Future B: The Manifesto</h2>
-        
-        <div style="border-left: 4px solid #00ff88; padding-left: 30px; margin: 30px 0;">
-            <p style="font-size: 1.2rem; color: #e0e0e0; margin-bottom: 20px; line-height: 1.8;">
-                <strong>Future A:</strong> Your lab keeps running GATK on AWS, burning $2K/month for 6-hour runtimes. The cloud vendors love you. Your CFO does not.
-            </p>
-            
-            <p style="font-size: 1.2rem; color: #e0e0e0; margin-bottom: 20px; line-height: 1.8;">
-                <strong>Future B:</strong> You decrypt SeqSwift on a $300 Chromebook. Full GRCh38 in 42 milliseconds. HPV16 panel in 0.004 seconds. Your data never leaves the building. Your competitors call their AWS rep and weep.
-            </p>
-        </div>
-        
-        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 30px; margin: 30px 0;">
-            <h3 style="color: #00ff88; font-size: 1.5rem; margin-bottom: 15px;">⚡ The NK Evasion Panel: Coming Q1 2025</h3>
-            <p style="color: #b0b0b0; font-size: 1rem; margin-bottom: 15px; line-height: 1.6;">
-                Full GRCh38 alignment in <strong style="color: #00ff88;">42 milliseconds</strong>. Not a typo. Not a benchmark trick. A complete paradigm shift in how we think about computational genomics.
-            </p>
-            <p style="color: #888; font-size: 0.9rem;">
-                The math isn't on arXiv yet. The patent isn't published yet. But if you're one of the 12 Paid Pilot labs, you'll be the first to detonate it in your pipeline.
-            </p>
-        </div>
-        
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://twitter.com/schlayguy" target="_blank" style="display: inline-block; background: transparent; border: 2px solid #00ff88; color: #00ff88; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-right: 15px; transition: all 0.3s ease;">
-                Read the Full Manifesto on X →
-            </a>
-            <a href="/pricing.html" style="display: inline-block; background: #00ff88; color: #0a0a0a; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;">
-                Secure Your License: $25K
-            </a>
-        </div>
-        
-        <p style="text-align: center; color: #666; font-size: 0.85rem; margin-top: 20px; font-style: italic;">
-            "Scale without the rust." — Protected under Provisional Patent 63/187,188
-        </p>
-    </div>
-</section>
-
-<style>
-    /* Hover effects for manifesto section */
-    section a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
-    }
-    
-    @media (max-width: 768px) {
-        section {
-            padding: 40px 20px;
-        }
-        
-        section h2 {
-            font-size: 2rem;
-        }
-        
-        section a {
-            display: block;
-            margin: 10px 0;
-        }
-    }
-</style>
-
-Could not connect to the reCAPTCHA service. Please check your internet connection and reload to get a reCAPTCHA challenge.
 
         <h2>🔬 Technical Details</h2>
         <div class="features-grid">
@@ -844,19 +802,19 @@ Could not connect to the reCAPTCHA service. Please check your internet connectio
             <p style="color: #ccc; line-height: 1.9; margin: 20px 0;">
                 SeqSwift is built by <strong style="color: #fff;">Dave Schliemann, MD</strong> – a fourth-year international medical graduate completing clinical training in the United States.
             </p>
-            
+
             <p style="color: #ccc; line-height: 1.9; margin: 20px 0;">
                 During a recent family-medicine clerkship, the young daughter of his preceptor – a little girl he and the team cared for together in clinic – died of an overwhelming infection that rapid diagnostics might have caught sooner. At the same time, several close friends and former colleagues from Kenya lost patients and family members to late-diagnosed sepsis and resistant pathogens.
             </p>
-            
+
             <p style="color: #ccc; line-height: 1.9; margin: 20px 0;">
                 Those two losses made the mission personal: <strong style="color: #0f0; text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);">no child, anywhere, should die because a genomic result took days instead of seconds.</strong>
             </p>
-            
+
             <p style="color: #ccc; line-height: 1.9; margin: 20px 0;">
                 Self-taught in systems programming (MIT 6.001 via MITx), with prior contributions to the <em>Journal of Visualized Experiments (JoVE)</em> and technology analysis at Forrester Research in Cambridge, he moved to Atlanta in 2024 to build SeqSwift – sub-second, bedside-ready sequencing that runs on a $499 edge device, in a Level-I trauma bay or a rural Kenyan ward.
             </p>
-            
+
             <p style="color: #0f0; font-size: 1.3em; text-align: center; margin-top: 30px; line-height: 1.6; text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);">
                 No big lab. No big budget.<br>
                 Just code that refuses to let the next child wait.
@@ -897,4 +855,4 @@ Could not connect to the reCAPTCHA service. Please check your internet connectio
     <p style="color: #888; text-align: center;">
         © 2025 SeqSwift | <a href="mailto:license@seqswift.com" style="color: #0f0;">license@seqswift.com</a>
     </p>
-</footer>     
+</footer>
