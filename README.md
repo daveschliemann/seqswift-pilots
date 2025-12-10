@@ -1,16 +1,9 @@
-# SeqSwift Pilots – Sub-second NGS on a $140 Chromebook
+# SeqSwift Pilots
 
-Full GRCh38 + pathogen/AMR pipeline in <25 min · 100% offline · works on Chromebook.
+Chromebook-native, sub-second NGS + pathogen/AMR profiling  
+Patent pending · <25 min full GRCh38 on $140 laptop · 100 % offline
 
-### 3-minute quickstart
-```bash
-git clone https://github.com/daveschliemann/seqswift-pilots.git
-cd seqswift-pilots/pilots
-unzip -o seqswift_root.zip
-chmod +x seqswift_processor.so.chromebook_safe
+Latest gated release → https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.14-dec2025-gatk-killer
 
-# Example: full HPV16 oncogene risk scoring (500+ isolates)
-./seqswift_processor.so.chromebook_safe --hpv16-risk --panel full --output hpv16_report.json
-Latest build: December 2025
-No GPG · No email required · Universal Chromebook binary included
-Questions → david@seqswift.com
+Only 12 passphrases left in 2025.  
+Email david@seqswift.com with institution + one-sentence use case → instant reply.
