@@ -31,3 +31,10 @@ All references are canonical public sources. No proprietary or patient data
 | HPV16 / HPV18                 | NCBI RefSeq NC_001526.4 / NC_001357.1                    | [HPV16](https://www.ncbi.nlm.nih.gov/nuccore/NC_001526.4) · [HPV18](https://www.ncbi.nlm.nih.gov/nuccore/NC_001357.1) |
 | SARS-CoV-2 Wuhan-Hu-1         | NCBI RefSeq NC_045512.2                                 | [NC_045512.2](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2)                   | bbccdd11…        |
 | AMR gene panel                | CDC/FDA-ARG-ANNOT v4 (2024)                             
+## Full Gated BOOM Assets (739 MB GRCh38 Index + HPV/BRCA Panels)
+
+To protect intellectual property (patent pending US 63/187,188), the complete binaries are gated.
+
+Request access:
+- Email david@seqswift.com - Request Passphrase with 1-sentence of your use-case.
+
