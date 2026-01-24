@@ -39,3 +39,4 @@ Request access:
 - Email david@seqswift.com - Request Passphrase with 1-sentence of your use-case.
 
 # Test commit - GPG verification check Sat Jan 24 01:07:33 PM EST 2026
+# Final verification test - key re-added Sat Jan 24 01:12:59 PM EST 2026
