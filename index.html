@@ -603,16 +603,18 @@
             </div>
             <div class="pilot-card">
                 <h4>🧬 Sickle Cell (HBB) - Newborn Screening</h4>
-                <div class="pilot-time">0.041 seconds</div>
+                <div class="pilot-time">0.041 seconds (single) | 2 seconds (1,000 patients)</div>
                 <div class="pilot-description">
-                    Hemoglobin beta gene panel for rapid sickle cell disease screening. Detects 337 pathogenic variants including rs334 (HbS mutation). Critical for point-of-care diagnosis in high-prevalence regions.
+                    Hemoglobin beta gene panel for rapid sickle cell disease screening. Detects 337 pathogenic variants including rs334 (HbS mutation). Single-patient triage in 41ms or batch screening of 1,000 newborns (9,000 reads) in 2 seconds.
                 </div>
                 <div class="pilot-specs">
-                    <p><strong>Target:</strong> HBB gene locus</p>
-                    <p><strong>Analysis Time:</strong> 41 milliseconds</p>
-                    <p><strong>Use Case:</strong> Point-of-care newborn screening</p>
-                    <p><strong>Clinical Impact:</strong> Same-day diagnosis (vs. 45-90 min standard)</p>
+                    <p><strong>Target:</strong> HBB gene locus (337 pathogenic variants)</p>
+                    <p><strong>Single Mode:</strong> 41 milliseconds per patient</p>
+                    <p><strong>Batch Mode:</strong> 1,000 patient cohort ~ 2 seconds</p>
+                    <p><strong>Use Cases:</strong> Bedside triage, population screening</p>
                 </div>
+                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download HBB v1.13</a>
+            </div>
                 <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download HBB v1.13</a>
             </div>       
             <div class="pilot-card">
