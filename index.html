@@ -192,11 +192,39 @@
         }
 
         .pilot-time {
-            color: #f0f;
-            font-size: 2em;
-            font-weight: bold;
-            margin: 15px 0;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+            font-size: 2.6em;
+            font-weight: 900;
+            margin: 18px 0 4px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -0.5px;
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(0, 255, 255, 0.9),
+                0 0 30px rgba(0, 255, 255, 0.5),
+                0 0 60px rgba(0, 255, 255, 0.2);
+            display: block;
+        }
+
+        .pilot-time::before {
+            content: "$ time ./seqswift";
+            display: block;
+            font-size: 0.36em;
+            color: #444;
+            letter-spacing: 0;
+            font-weight: 400;
+            margin-bottom: 6px;
+            text-shadow: none;
+        }
+
+        .vs-industry {
+            font-size: 0.8em;
+            color: #444;
+            margin: 2px 0 16px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .vs-industry span {
+            color: #c33;
         }
 
         .pilot-description {
@@ -361,12 +389,124 @@
             font-size: 3em;
             color: #0ff;
             font-weight: bold;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            text-shadow:
+                0 0 10px rgba(0,255,255,0.9),
+                0 0 30px rgba(0,255,255,0.6),
+                0 0 60px rgba(0,255,255,0.3);
+            letter-spacing: -1px;
         }
 
         .stat-label {
             color: #888;
             margin-top: 10px;
+        }
+
+        /* ── BENCHMARK TABLE (slide-accurate) ── */
+        .benchmark-section {
+            margin: 60px auto;
+            max-width: 1100px;
+        }
+
+        .benchmark-table-wrap {
+            background: #0a0a0a;
+            border: 2px solid #0ff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .benchmark-table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .benchmark-table-wrap thead th {
+            background: #0f0;
+            color: #000;
+            font-size: 0.95em;
+            font-weight: 700;
+            padding: 16px 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .benchmark-table-wrap tbody tr {
+            border-bottom: 1px solid #1a1a1a;
+            transition: background 0.2s;
+        }
+
+        .benchmark-table-wrap tbody tr:hover {
+            background: rgba(0,255,255,0.04);
+        }
+
+        .benchmark-table-wrap td {
+            padding: 16px 20px;
+            font-size: 0.95em;
+            color: #ccc;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .benchmark-table-wrap td:first-child {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .seqswift-time {
+            color: #0f0 !important;
+            font-weight: 700;
+            font-size: 1.05em;
+            text-shadow: 0 0 10px rgba(0,255,0,0.5);
+        }
+
+        .industry-time {
+            color: #ff4444 !important;
+            font-weight: 600;
+        }
+
+        .ont-benefit {
+            color: #0ff !important;
+            font-size: 0.9em;
+        }
+
+        .benchmark-note {
+            text-align: center;
+            color: #555;
+            font-size: 0.82em;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* ── PILOT TIME — terminal style ── */
+        .pilot-time {
+            background: #000;
+            border-left: 3px solid #0f0;
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin: 15px 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .pilot-time-label {
+            color: #555;
+            font-size: 0.75em;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .pilot-time-value {
+            color: #0f0;
+            font-size: 2em;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(0,255,0,0.6);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .pilot-time-vs {
+            color: #ff4444;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: block;
         }
 
         /* ── TEAM SECTION ── */
@@ -483,6 +623,70 @@
             </div>
         </div>
 
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- BENCHMARK TABLE — matches ONT pitch deck slide 4           -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="benchmark-section">
+            <h2>⚡ Proven Performance on Edge Hardware</h2>
+            <div class="benchmark-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Use Case</th>
+                            <th>SeqSwift Time</th>
+                            <th>Industry Standard</th>
+                            <th>ONT Ecosystem Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>E. coli AMR (103 MinION Fastq files)</td>
+                            <td class="seqswift-time">2.48 seconds</td>
+                            <td class="industry-time">24–72 hours</td>
+                            <td class="ont-benefit">Real-time sepsis decisions at bedside</td>
+                        </tr>
+                        <tr>
+                            <td>MinION FASTQ (Torpedo, 22 files)</td>
+                            <td class="seqswift-time">1.4 seconds</td>
+                            <td class="industry-time">Hours (Clair3)</td>
+                            <td class="ont-benefit">Proven Dorado → SeqSwift integration</td>
+                        </tr>
+                        <tr>
+                            <td>HPV16/18 Oncology</td>
+                            <td class="seqswift-time">0.007 seconds</td>
+                            <td class="industry-time">4–8 hours</td>
+                            <td class="ont-benefit">Instant cervical cancer screening</td>
+                        </tr>
+                        <tr>
+                            <td>Sickle Cell HBB (single)</td>
+                            <td class="seqswift-time">0.041 seconds</td>
+                            <td class="industry-time">45–90 minutes</td>
+                            <td class="ont-benefit">Bedside diagnosis</td>
+                        </tr>
+                        <tr>
+                            <td>Sickle Cell HBB (1,000 patients)</td>
+                            <td class="seqswift-time">2 seconds</td>
+                            <td class="industry-time">24–48 hours</td>
+                            <td class="ont-benefit">Population-scale NICU screening</td>
+                        </tr>
+                        <tr>
+                            <td>Clinical BAL → AMR</td>
+                            <td class="seqswift-time">58 seconds</td>
+                            <td class="industry-time">Days</td>
+                            <td class="ont-benefit">Outbreak response, field deployment</td>
+                        </tr>
+                        <tr>
+                            <td>GRCh38 Index Build</td>
+                            <td class="seqswift-time">25 minutes</td>
+                            <td class="industry-time">Days on cluster</td>
+                            <td class="ont-benefit">Offline setup, no cloud dependency</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="benchmark-note">All benchmarks validated on Walmart Chromebook — Sub-second Diagnostics, Offline, Decentralized — Everywhere</p>
+        </div>
+
         <div class="video-section">
             <h3>🎬 Watch SeqSwift Build GRCh38 Live on a Chromebook</h3>
             <div class="video-container">
@@ -528,8 +732,8 @@
                     </tr>
                     <tr>
                         <td><strong style="color: #f0f;">E. coli AMR</strong></td>
-                        <td>Antimicrobial Resistance Profiling (100k+ sequences)</td>
-                        <td style="color: #f0f;">5 seconds</td>
+                        <td>AMR Detection + Clinical Insight (103 real MinION FASTQ files)</td>
+                        <td style="color: #f0f;"><strong>2.48 s</strong></td>
                     </tr>
                     <tr>
                         <td><strong style="color: #0f0;">HPV16</strong></td>
@@ -558,7 +762,12 @@
             <!-- NK CARD -->
             <div class="pilot-card">
                 <h4>NK Cell Attenuation + MHC-I Downregulation</h4>
-                <div class="pilot-time">0.042 s</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --immune-evasion grch38</span>
+                    <span class="pilot-time-value">0.042 s</span>
+                    <span class="pilot-time-vs">↑ Industry (GATK): 6–24 hours</span>
+                </div>
+                <div class="vs-industry">vs. <span>days on cloud cluster</span></div>
                 <div class="pilot-description">
                     Full GRCh38.p14 (3.1B bases) + 50M variants from TCGA/GEO. Maps immune evasion hotspots (MHC-I downregulation, NK attenuation) for cancer and viral escape.
                 </div>
@@ -573,7 +782,12 @@
 
             <div class="pilot-card">
                 <h4>GRCh38 - Full Human Genome</h4>
-                <div class="pilot-time">25 min build / 58s chr22</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --build grch38</span>
+                    <span class="pilot-time-value">25 min build / 58 s chr22</span>
+                    <span class="pilot-time-vs">↑ Industry: Days on cluster</span>
+                </div>
+                <div class="vs-industry">vs. <span>days on cluster</span></div>
                 <div class="pilot-description">
                     Full human reference genome (3.099 billion bases) built live on a $140 Chromebook. Powers clinical-grade analysis with chromosome 22 queries in 58 seconds and sepsis rule-out in 0.012 seconds.
                 </div>
@@ -588,14 +802,20 @@
 
             <div class="pilot-card">
                 <h4>🦠 E. coli AMR - Antibiotic Resistance Profiling</h4>
-                <div class="pilot-time">5 seconds</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --amr ecoli_103_minion.fastq</span>
+                    <span class="pilot-time-value">2.48 s</span>
+                    <span class="pilot-time-vs">↑ Industry (GATK/cloud): 24–72 hours</span>
+                </div>
+                <div class="vs-industry">vs. <span>24–72 hours</span> (cloud pipeline)</div>
                 <div class="pilot-description">
-                    Real-world antimicrobial resistance detection in E. coli clinical isolates. Identifies fluoroquinolone resistance mutations (gyrA S83L, parC S80I) from Oxford Nanopore data. Processes 100,000+ sequences with variant calling and resistance marker detection.
+                    Real-world AMR detection + clinical insight recommendations on 103 real MinION FASTQ files from E. coli clinical isolates. gyrA resistance detected in 55% of files — clinical output: prescribe aminoglycoside. Identifies fluoroquinolone resistance mutations (gyrA S83L, parC S80I) from Oxford Nanopore long-read data.
                 </div>
                 <div class="pilot-specs">
-                    <p><strong>Input:</strong> 6 FASTQ files (100k+ sequences)</p>
-                    <p><strong>Detection:</strong> gyrA S83L, parC S80I mutations</p>
-                    <p><strong>Resistance:</strong> Fluoroquinolone markers</p>
+                    <p><strong>Input:</strong> 103 real MinION FASTQ files</p>
+                    <p><strong>Detection:</strong> gyrA S83L — 55% file-level match rate</p>
+                    <p><strong>Clinical Output:</strong> Prescribe aminoglycoside recommendation</p>
+                    <p><strong>Resistance:</strong> Fluoroquinolone markers (gyrA, parC)</p>
                     <p><strong>Use Case:</strong> Clinical diagnostics, outbreak surveillance</p>
                     <p><strong>Hardware:</strong> Verified on $140 Chromebook</p>
                 </div>
@@ -604,7 +824,12 @@
 
             <div class="pilot-card">
                 <h4>🦠 E. coli - Complete Genome</h4>
-                <div class="pilot-time">0.016 seconds</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --profile ecoli.fastq</span>
+                    <span class="pilot-time-value">0.016 s</span>
+                    <span class="pilot-time-vs">↑ Industry: Hours</span>
+                </div>
+                <div class="vs-industry">vs. <span>hours</span> (BWA/GATK)</div>
                 <div class="pilot-description">
                     Complete E. coli genome analysis (4.6 Mbp). Perfect for microbiology research, antibiotic resistance studies, and educational demonstrations of rapid pathogen identification.
                 </div>
@@ -619,7 +844,12 @@
 
             <div class="pilot-card">
                 <h4>🎗️ HPV16 - Single Oncology Panel</h4>
-                <div class="pilot-time">0.004 seconds</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --hpv16 sample.fastq</span>
+                    <span class="pilot-time-value">0.004 s</span>
+                    <span class="pilot-time-vs">↑ Industry: 4–8 hours</span>
+                </div>
+                <div class="vs-industry">vs. <span>4–8 hours</span> (standard lab)</div>
                 <div class="pilot-description">
                     Human Papillomavirus type 16 oncology panel. Critical for cervical cancer screening and HPV-related cancer research. The most common HPV strain in cervical cancer cases.
                 </div>
@@ -634,7 +864,12 @@
 
             <div class="pilot-card">
                 <h4>🎗️ HPV16+18 - Combined Panel</h4>
-                <div class="pilot-time">0.007 seconds</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --hpv1618 sample.fastq</span>
+                    <span class="pilot-time-value">0.007 s</span>
+                    <span class="pilot-time-vs">↑ Industry: 4–8 hours</span>
+                </div>
+                <div class="vs-industry">vs. <span>4–8 hours</span> — 3.45M mutations</div>
                 <div class="pilot-description">
                     Combined HPV16 and HPV18 panel covering the two most oncogenic HPV strains responsible for 70% of cervical cancers. Processes 3.45 million mutations in under a millisecond.
                 </div>
@@ -649,7 +884,12 @@
 
             <div class="pilot-card">
                 <h4>🧬 Sickle Cell (HBB) - Newborn Screening</h4>
-                <div class="pilot-time">0.041 seconds (single) | 2 seconds (1,000 patients)</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --hbb patient.fastq</span>
+                    <span class="pilot-time-value">0.041 s · single &nbsp;|&nbsp; 2 s · 1,000 patients</span>
+                    <span class="pilot-time-vs">↑ Industry: 45–90 min / 24–48 hrs (batch)</span>
+                </div>
+                <div class="vs-industry">vs. <span>45–90 minutes</span> per patient (standard)</div>
                 <div class="pilot-description">
                     Hemoglobin beta gene panel for rapid sickle cell disease screening. Detects 337 pathogenic variants including rs334 (HbS mutation). Single-patient triage in 41ms or batch screening of 1,000 newborns (9,000 reads) in 2 seconds.
                 </div>
@@ -664,7 +904,12 @@
 
             <div class="pilot-card">
                 <h4>🦠 SARS-CoV-2 - Variants Analysis</h4>
-                <div class="pilot-time">0.008 seconds</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --sars2 sample.fastq</span>
+                    <span class="pilot-time-value">0.008 s</span>
+                    <span class="pilot-time-vs">↑ Industry: Hours to days</span>
+                </div>
+                <div class="vs-industry">vs. <span>hours</span> (standard variant calling)</div>
                 <div class="pilot-description">
                     COVID-19 variants analysis panel. Enables rapid identification of SARS-CoV-2 strains and mutations for epidemiological surveillance and outbreak response.
                 </div>
@@ -679,7 +924,12 @@
 
             <div class="pilot-card">
                 <h4>🧬 VHL - Hereditary Cancer Panel</h4>
-                <div class="pilot-time">0.006 seconds</div>
+                <div class="pilot-time">
+                    <span class="pilot-time-label">$ time ./seqswift --vhl patient.fastq</span>
+                    <span class="pilot-time-value">0.006 s</span>
+                    <span class="pilot-time-vs">↑ Industry: 4–8 hours</span>
+                </div>
+                <div class="vs-industry">vs. <span>hours to days</span> (standard)</div>
                 <div class="pilot-description">
                     Von Hippel-Lindau hereditary cancer panel. Essential for identifying mutations linked to kidney cancer, hemangioblastomas, pheochromocytomas, and other VHL-associated tumors.
                 </div>
@@ -948,6 +1198,34 @@ cd SeqSwift_GRCh38_BOOM_v1.13<br>
             &copy; 2025 SeqSwift &bull; <a href="mailto:david@seqswift.com">david@seqswift.com</a>
         </p>
     </footer>
+
+    <script>
+        // Glow-pulse cards on scroll into view
+        const cards = document.querySelectorAll('.pilot-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.boxShadow = '0 0 40px rgba(0,255,255,0.35)';
+                    entry.target.style.borderColor = '#0ff';
+                    // Animate the time text
+                    const timeEl = entry.target.querySelector('.pilot-time');
+                    if (timeEl && !timeEl.dataset.animated) {
+                        timeEl.dataset.animated = 'true';
+                        timeEl.style.transition = 'text-shadow 0.6s ease, color 0.6s ease';
+                        timeEl.style.color = '#0ff';
+                        timeEl.style.textShadow = '0 0 20px rgba(0,255,255,1), 0 0 60px rgba(0,255,255,0.7), 0 0 100px rgba(0,255,255,0.4)';
+                        setTimeout(() => {
+                            timeEl.style.color = '#fff';
+                            timeEl.style.textShadow = '0 0 10px rgba(0,255,255,0.9), 0 0 30px rgba(0,255,255,0.5), 0 0 60px rgba(0,255,255,0.2)';
+                        }, 700);
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
 
 </body>
 </html>
