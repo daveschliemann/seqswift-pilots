@@ -1,1232 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeqSwift – Replace GATK/BWA in 0.0069 s | Patent-Pending NGS on $140 Chromebook</title>
-    <meta name="description" content="Full human genome in 25 min. HPV oncology in 0.0069 s. No cloud, no cluster, no GATK. Legacy NGS replaced. Download verifiable pilot now.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: #000;
-            color: #0ff;
-            font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
-            line-height: 1.75;
-            overflow-x: hidden;
-        }
-
-        .scarcity-banner {
-            background: #ff0000;
-            color: #fff;
-            text-align: center;
-            padding: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.85; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 900;
-            margin: 40px 0 20px;
-            text-align: center;
-            color: #0ff;
-            text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
-            letter-spacing: -0.5px;
-        }
-
-        h1 .gatk-text {
-            font-weight: 900;
-            text-shadow: 0 0 40px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 0.8);
-            letter-spacing: 0.05em;
-        }
-
-        .tagline {
-            text-align: center;
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        h2 {
-            font-size: 2em;
-            color: #0ff;
-            margin: 60px 0 30px;
-            text-align: center;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-        }
-
-        h3 {
-            font-size: 1.5em;
-            color: #0ff;
-            margin: 30px 0 15px;
-        }
-
-        .video-section {
-            margin: 60px auto;
-            max-width: 900px;
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-        }
-
-        .video-section h3 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            border: 2px solid #0ff;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .pilots-section {
-            margin: 60px auto;
-            max-width: 1200px;
-        }
-
-        .pilots-table {
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 20px;
-            text-align: left;
-            border-bottom: 1px solid #333;
-        }
-
-        th {
-            background: #222;
-            color: #0ff;
-            font-size: 1.2em;
-        }
-
-        td {
-            color: #fff;
-            font-size: 1.1em;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tbody tr {
-            transition: background 0.3s ease;
-        }
-
-        tbody tr:hover {
-            background: rgba(0, 255, 255, 0.05);
-        }
-
-        .pilot-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .pilot-card {
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .pilot-card:hover {
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .pilot-card h4 {
-            color: #0f0;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
-        }
-
-        .pilot-time {
-            font-size: 2.6em;
-            font-weight: 900;
-            margin: 18px 0 4px;
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -0.5px;
-            color: #fff;
-            text-shadow:
-                0 0 10px rgba(0, 255, 255, 0.9),
-                0 0 30px rgba(0, 255, 255, 0.5),
-                0 0 60px rgba(0, 255, 255, 0.2);
-            display: block;
-        }
-
-        .pilot-time::before {
-            content: "$ time ./seqswift";
-            display: block;
-            font-size: 0.36em;
-            color: #444;
-            letter-spacing: 0;
-            font-weight: 400;
-            margin-bottom: 6px;
-            text-shadow: none;
-        }
-
-        .vs-industry {
-            font-size: 0.8em;
-            color: #444;
-            margin: 2px 0 16px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .vs-industry span {
-            color: #c33;
-        }
-
-        .pilot-description {
-            color: #ccc;
-            line-height: 1.8;
-            margin: 15px 0;
-        }
-
-        .pilot-specs {
-            background: #000;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 3px solid #0ff;
-        }
-
-        .pilot-specs p {
-            color: #888;
-            margin: 8px 0;
-        }
-
-        .pilot-specs strong {
-            color: #0ff;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-family: 'JetBrains Mono', monospace;
-            border: 2px solid #0ff;
-            background: transparent;
-            color: #0ff;
-            cursor: pointer;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s;
-            text-align: center;
-            margin-top: 15px;
-            width: 100%;
-        }
-
-        .btn:hover {
-            background: #0ff;
-            color: #000;
-            box-shadow: 0 0 20px #0ff;
-            transform: scale(1.05);
-        }
-
-        .btn-primary {
-            border-color: #0f0;
-            color: #0f0;
-        }
-
-        .btn-primary:hover {
-            background: #0f0;
-            color: #000;
-            box-shadow: 0 0 20px #0f0;
-        }
-
-        .access-section {
-            max-width: 900px;
-            margin: 60px auto;
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            padding: 40px;
-        }
-
-        .access-section h3 {
-            margin-top: 30px;
-        }
-
-        .access-section ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-
-        .access-section li {
-            color: #ccc;
-            margin: 10px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .access-section li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #0ff;
-        }
-
-        .code-block {
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 5px;
-            padding: 20px;
-            margin: 20px 0;
-            overflow-x: auto;
-        }
-
-        .code-block code {
-            color: #0f0;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .feature-box {
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            padding: 30px;
-        }
-
-        .feature-box h4 {
-            color: #0f0;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .feature-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .feature-box li {
-            color: #ccc;
-            margin: 10px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .feature-box li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #0f0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .stat-box {
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 3em;
-            color: #0ff;
-            font-weight: bold;
-            text-shadow:
-                0 0 10px rgba(0,255,255,0.9),
-                0 0 30px rgba(0,255,255,0.6),
-                0 0 60px rgba(0,255,255,0.3);
-            letter-spacing: -1px;
-        }
-
-        .stat-label {
-            color: #888;
-            margin-top: 10px;
-        }
-
-        /* ── BENCHMARK TABLE (slide-accurate) ── */
-        .benchmark-section {
-            margin: 60px auto;
-            max-width: 1100px;
-        }
-
-        .benchmark-table-wrap {
-            background: #0a0a0a;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
-        }
-
-        .benchmark-table-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .benchmark-table-wrap thead th {
-            background: #0f0;
-            color: #000;
-            font-size: 0.95em;
-            font-weight: 700;
-            padding: 16px 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .benchmark-table-wrap tbody tr {
-            border-bottom: 1px solid #1a1a1a;
-            transition: background 0.2s;
-        }
-
-        .benchmark-table-wrap tbody tr:hover {
-            background: rgba(0,255,255,0.04);
-        }
-
-        .benchmark-table-wrap td {
-            padding: 16px 20px;
-            font-size: 0.95em;
-            color: #ccc;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .benchmark-table-wrap td:first-child {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .seqswift-time {
-            color: #0f0 !important;
-            font-weight: 700;
-            font-size: 1.05em;
-            text-shadow: 0 0 10px rgba(0,255,0,0.5);
-        }
-
-        .industry-time {
-            color: #ff4444 !important;
-            font-weight: 600;
-        }
-
-        .ont-benefit {
-            color: #0ff !important;
-            font-size: 0.9em;
-        }
-
-        .benchmark-note {
-            text-align: center;
-            color: #555;
-            font-size: 0.82em;
-            margin-top: 12px;
-            font-style: italic;
-        }
-
-        /* ── PILOT TIME — terminal style ── */
-        .pilot-time {
-            background: #000;
-            border-left: 3px solid #0f0;
-            border-radius: 4px;
-            padding: 12px 16px;
-            margin: 15px 0;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .pilot-time-label {
-            color: #555;
-            font-size: 0.75em;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .pilot-time-value {
-            color: #0f0;
-            font-size: 2em;
-            font-weight: 700;
-            text-shadow: 0 0 15px rgba(0,255,0,0.6);
-            display: block;
-            line-height: 1.2;
-        }
-
-        .pilot-time-vs {
-            color: #ff4444;
-            font-size: 0.8em;
-            margin-top: 5px;
-            display: block;
-        }
-
-        /* ── TEAM SECTION ── */
-        .team-section {
-            max-width: 1000px;
-            margin: 60px auto;
-            background: #111;
-            border: 2px solid #0ff;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .team-card {
-            background: #0a0a0a;
-            border: 2px solid #333;
-            border-radius: 8px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            border-color: #0ff;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-        }
-
-        .team-card h3 {
-            color: #fff;
-            font-size: 1.4em;
-            margin: 0 0 6px;
-        }
-
-        .team-card .team-role {
-            color: #0ff;
-            font-size: 1em;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .team-divider {
-            width: 40px;
-            height: 3px;
-            background: #0ff;
-            border: none;
-            margin: 0 0 18px;
-        }
-
-        .team-card p {
-            color: #ccc;
-            font-size: 0.9em;
-            line-height: 1.8;
-        }
-
-        footer {
-            margin-top: 80px;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid #333;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        footer a {
-            color: #0ff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 1.8em; }
-            .tagline { font-size: 1em; }
-            .pilot-cards { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeqSwift – Sub-second NGS on Any Hardware | Patent-Pending</title>
+<meta name="description" content="Sub-second DNA sequencing analysis on a $140 Chromebook. E. coli AMR in 2.88s. HPV16/18 in 0.007s. No cloud, no GPU, no GATK.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:'JetBrains Mono',monospace;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.banner{background:#f00;color:#fff;text-align:center;padding:10px;font-size:14px;font-weight:700;position:sticky;top:0;z-index:100}
+.banner a{color:#fff;text-decoration:underline}
+
+/* 1. HERO */
+.hero{padding:80px 20px 60px;text-align:center;max-width:900px;margin:0 auto}
+.hero h1{font-size:clamp(2em,6vw,4em);font-weight:900;color:#0ff;line-height:1.15;margin-bottom:20px;text-shadow:0 0 40px rgba(0,255,255,0.5)}
+.hero .mission{color:#0f0;font-size:1.1em;margin:16px 0 32px;font-style:italic}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.btn{padding:14px 32px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:1em;font-weight:700;cursor:pointer;transition:all 0.2s;display:inline-block}
+.btn-primary{background:#0f0;color:#000;border:2px solid #0f0}
+.btn-primary:hover{background:#0c0;box-shadow:0 0 20px rgba(0,255,0,0.4)}
+.btn-secondary{background:transparent;color:#0ff;border:2px solid #0ff}
+.btn-secondary:hover{background:rgba(0,255,255,0.1)}
+.btn-red{background:transparent;color:#f00;border:2px solid #f00}
+.btn-red:hover{background:#f00;color:#fff}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;max-width:900px;margin:0 auto 60px;padding:0 20px}
+.stat{background:#111;border:1px solid #0ff;border-radius:8px;padding:24px;text-align:center}
+.stat-val{font-size:2em;font-weight:900;color:#0ff}
+.stat-label{color:#888;font-size:0.8em;margin-top:6px}
+
+/* SECTIONS */
+section{padding:60px 20px;max-width:1000px;margin:0 auto}
+.section-dark{background:#080808;padding:60px 20px}
+.section-dark section{margin:0 auto}
+h2{font-size:1.8em;font-weight:900;color:#0ff;text-align:center;margin-bottom:40px}
+
+/* 2. BENCHMARKS */
+.bench-table{width:100%;border-collapse:collapse;background:#111;border:1px solid #0ff;border-radius:8px;overflow:hidden}
+.bench-table th{background:#0ff;color:#000;padding:14px 20px;text-align:left;font-size:0.85em;font-family:'JetBrains Mono',monospace}
+.bench-table td{padding:14px 20px;border-bottom:1px solid #222;font-size:0.9em;color:#ccc}
+.bench-table tr:last-child td{border-bottom:none}
+.bench-table tr:hover td{background:#161616}
+.fast{color:#0f0;font-weight:700}
+.slow{color:#f44}
+
+/* 3. PILOTS */
+.pilots{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.pilot{background:#111;border:1px solid #333;border-radius:8px;padding:24px;transition:all 0.2s}
+.pilot:hover{border-color:#0ff;box-shadow:0 0 20px rgba(0,255,255,0.15);transform:translateY(-2px)}
+.pilot h4{color:#0f0;font-size:1em;margin-bottom:8px}
+.pilot p{color:#888;font-size:0.82em}
+
+/* 4. PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.price-card{background:#111;border:1px solid #333;border-radius:8px;padding:32px;text-align:center;transition:all 0.2s;position:relative}
+.price-card:hover{transform:translateY(-3px)}
+.price-card.featured{border:2px solid #0f0;box-shadow:0 0 30px rgba(0,255,0,0.15)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f0;color:#000;font-size:0.7em;font-weight:900;padding:4px 16px;border-radius:20px;white-space:nowrap}
+.price-card h3{color:#0ff;font-size:1.1em;margin-bottom:8px}
+.price-card .price{font-size:2.2em;font-weight:900;color:#fff;margin:16px 0 8px}
+.price-card .price span{font-size:0.45em;color:#888;font-weight:400}
+.price-card .desc{color:#888;font-size:0.82em;margin-bottom:20px;min-height:40px}
+.price-card ul{list-style:none;text-align:left;margin-bottom:24px}
+.price-card ul li{color:#ccc;font-size:0.82em;padding:6px 0;border-bottom:1px solid #1a1a1a}
+.price-card ul li:before{content:"✓ ";color:#0f0}
+.price-card ul li.no:before{content:"✗ ";color:#f44}
+.price-card ul li.no{color:#555}
+
+/* 5. GET STARTED */
+.get-started{background:#111;border:2px solid #f00;border-radius:8px;padding:40px;max-width:700px;margin:0 auto;text-align:center}
+.get-started h2{color:#f00}
+.get-started p{color:#ccc;margin-bottom:24px}
+.steps{text-align:left;max-width:500px;margin:0 auto 28px;counter-reset:step}
+.step{display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #222;color:#ccc;font-size:0.88em}
+.step-num{color:#f00;font-weight:900;font-size:1.2em;min-width:24px}
+
+/* 6. GLOBAL HEALTH + TEAM */
+.origin{background:#111;border:1px solid #0f0;border-radius:8px;padding:40px;max-width:800px;margin:0 auto;text-align:center}
+.origin p{color:#ccc;line-height:1.9;margin-bottom:16px}
+.origin .tagline{color:#0f0;font-size:1.1em;font-weight:700}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
+.team-card{background:#111;border:1px solid #333;border-radius:8px;padding:28px}
+.team-card h3{color:#fff;font-size:1em;margin-bottom:4px}
+.team-card .role{color:#0ff;font-size:0.82em;margin-bottom:14px;display:block}
+.team-card p{color:#888;font-size:0.82em;line-height:1.8}
+
+footer{border-top:1px solid #222;padding:40px 20px;text-align:center;color:#555;font-size:0.82em}
+footer .tagline{color:#0f0;font-size:1.1em;font-weight:700;margin-bottom:12px}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.8em}
+  .bench-table th,.bench-table td{padding:10px 12px;font-size:0.75em}
+  .pricing-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <div class="scarcity-banner">
-        🔐 Passphrase issued by request only — email <a href="mailto:david@seqswift.com" style="color: #fff; text-decoration: underline;">david@seqswift.com</a> to request access.
+
+<!-- BANNER -->
+<div class="banner">🔐 Passphrase by request only — <a href="mailto:david@seqswift.com">email david@seqswift.com</a> with your use case</div>
+
+<!-- 1. HERO -->
+<div class="hero">
+  <h1>GATK takes 6 hours.<br>SeqSwift takes 0.007 seconds.</h1>
+  <p class="mission">No child, anywhere, should die because a genomic result took days instead of seconds.</p>
+  <div class="hero-btns">
+    <a href="mailto:david@seqswift.com" class="btn btn-primary">Request Access →</a>
+    <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn btn-secondary">View Release</a>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-val">2.88s</div><div class="stat-label">103 MinION files</div></div>
+  <div class="stat"><div class="stat-val">0.007s</div><div class="stat-label">HPV16/18 panel</div></div>
+  <div class="stat"><div class="stat-val">489 MB</div><div class="stat-label">Peak RAM</div></div>
+  <div class="stat"><div class="stat-val">$140</div><div class="stat-label">Chromebook. No cloud.</div></div>
+</div>
+
+<!-- 2. BENCHMARKS -->
+<section>
+  <h2>⚡ Benchmarks</h2>
+  <table class="bench-table">
+    <thead>
+      <tr><th>Use Case</th><th>SeqSwift</th><th>Traditional</th><th>Hardware</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>E. coli AMR (103 MinION files)</td><td class="fast">2.88 seconds</td><td class="slow">24–72 hours</td><td>$140 Chromebook</td></tr>
+      <tr><td>HPV16/18 Oncology</td><td class="fast">0.007 seconds</td><td class="slow">4–8 hours</td><td>Any laptop</td></tr>
+      <tr><td>Sickle Cell (1,000 patients)</td><td class="fast">~2 seconds</td><td class="slow">Hours</td><td>Low-end device</td></tr>
+      <tr><td>Full GRCh38 build</td><td class="fast">25 minutes</td><td class="slow">GPU cluster required</td><td>Chromebook</td></tr>
+      <tr><td>Peak RAM usage</td><td class="fast">489 MB</td><td class="slow">16–64 GB typical</td><td>Any device</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 3. PILOTS -->
+<div class="section-dark">
+  <section>
+    <h2>🔬 Available Pilots</h2>
+    <div class="pilots">
+      <div class="pilot"><h4>🦠 E. coli AMR / Sepsis</h4><p>gyrA S83L · parC S80I · fluoroquinolone resistance detection</p></div>
+      <div class="pilot"><h4>🧬 HPV16/18 Oncology</h4><p>Sub-millisecond cervical cancer screening · point-of-care ready</p></div>
+      <div class="pilot"><h4>🧬 Sickle Cell (HBB)</h4><p>HbS mutation detection · 1,000 patients in ~2 seconds</p></div>
+      <div class="pilot"><h4>🔬 NK Cell Attenuation</h4><p>Immunotherapy support panel · alignment-free k-mer detection</p></div>
+      <div class="pilot"><h4>🌍 GRCh38 Full Human</h4><p>3.1B bases · 739 MB index · Chr22 in 58s · fully offline</p></div>
+      <div class="pilot"><h4>🦠 SARS-CoV-2</h4><p>Rapid variant detection · air-gapped deployment ready</p></div>
+    </div>
+    <p style="text-align:center;color:#555;font-size:0.8em;margin-top:24px">All pilots GPG-encrypted · Patent-pending (63/187,188) · Runs 100% offline</p>
+  </section>
+</div>
+
+<!-- 4. PRICING -->
+<section>
+  <h2>💰 Pricing</h2>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <h3>Academic &amp; Non-Profit</h3>
+      <div class="price">Free<span> / forever</span></div>
+      <div class="desc">For researchers, universities, and NGOs advancing global health.</div>
+      <ul>
+        <li>All available pilots</li>
+        <li>GPG-encrypted panel files</li>
+        <li>Full offline deployment</li>
+        <li>Community support via GitHub</li>
+        <li class="no">Commercial use</li>
+        <li class="no">SLA or dedicated support</li>
+      </ul>
+      <a href="mailto:david@seqswift.com?subject=Academic Access Request" class="btn btn-secondary" style="width:100%;text-align:center">Request Access →</a>
     </div>
 
-    <div class="container">
-        <h1><span class="gatk-text">GATK</span> Takes 6 Hours. SeqSwift Takes 0.0069 Seconds.</h1>
-        <p class="tagline">Full GRCh38 in 25 min. Chr22 in 58 s. On a $140 Walmart Chromebook. Your move, Broad Institute.</p>
-        <p style="text-align: center; color: #0f0; font-size: 1.15em; margin: -20px 0 40px; text-shadow: 0 0 15px rgba(0,255,0,0.5); font-weight: bold;">No child, anywhere, should die because a genomic result took days instead of seconds.</p>
+    <div class="price-card featured">
+      <div class="price-badge">Most Popular</div>
+      <h3>Commercial Pilot</h3>
+      <div class="price">Contact<span> for licensing</span></div>
+      <div class="desc">For diagnostics companies, hospitals, and clinical labs.</div>
+      <ul>
+        <li>All pilots + custom panels</li>
+        <li>Commercial deployment license</li>
+        <li>Direct technical support</li>
+        <li>Integration assistance</li>
+        <li>Performance benchmarking</li>
+        <li>NDA available</li>
+      </ul>
+      <a href="mailto:david@seqswift.com?subject=Commercial Pilot Inquiry" class="btn btn-primary" style="width:100%;text-align:center">Get in Touch →</a>
+    </div>
 
-        <div class="stats-grid">
-            <div class="stat-box">
-                <div class="stat-value">3.1B</div>
-                <div class="stat-label">Bases → 739 MB Index</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">25 min</div>
-                <div class="stat-label">Full GRCh38 Build</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">58s</div>
-                <div class="stat-label">Chr22 Alignment</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">489 MB</div>
-                <div class="stat-label">RAM Peak</div>
-            </div>
-        </div>
+    <div class="price-card">
+      <h3>Enterprise / OEM</h3>
+      <div class="price">Custom<span> partnership</span></div>
+      <div class="desc">For sequencing platform vendors and global health organizations.</div>
+      <ul>
+        <li>Full source license</li>
+        <li>Custom panel development</li>
+        <li>OEM integration support</li>
+        <li>Co-development available</li>
+        <li>Dedicated SLA</li>
+        <li>White-label options</li>
+      </ul>
+      <a href="mailto:david@seqswift.com?subject=Enterprise Partnership" class="btn btn-secondary" style="width:100%;text-align:center">Discuss Partnership →</a>
+    </div>
 
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- BENCHMARK TABLE — matches ONT pitch deck slide 4           -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <div class="benchmark-section">
-            <h2>⚡ Proven Performance on Edge Hardware</h2>
-            <div class="benchmark-table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Use Case</th>
-                            <th>SeqSwift Time</th>
-                            <th>Industry Standard</th>
-                            <th>ONT Ecosystem Benefit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>E. coli AMR (103 MinION Fastq files)</td>
-                            <td class="seqswift-time">2.48 seconds</td>
-                            <td class="industry-time">24–72 hours</td>
-                            <td class="ont-benefit">Real-time sepsis decisions at bedside</td>
-                        </tr>
-                        <tr>
-                            <td>MinION FASTQ (Torpedo, 22 files)</td>
-                            <td class="seqswift-time">1.4 seconds</td>
-                            <td class="industry-time">Hours (Clair3)</td>
-                            <td class="ont-benefit">Proven Dorado → SeqSwift integration</td>
-                        </tr>
-                        <tr>
-                            <td>HPV16/18 Oncology</td>
-                            <td class="seqswift-time">0.007 seconds</td>
-                            <td class="industry-time">4–8 hours</td>
-                            <td class="ont-benefit">Instant cervical cancer screening</td>
-                        </tr>
-                        <tr>
-                            <td>Sickle Cell HBB (single)</td>
-                            <td class="seqswift-time">0.041 seconds</td>
-                            <td class="industry-time">45–90 minutes</td>
-                            <td class="ont-benefit">Bedside diagnosis</td>
-                        </tr>
-                        <tr>
-                            <td>Sickle Cell HBB (1,000 patients)</td>
-                            <td class="seqswift-time">2 seconds</td>
-                            <td class="industry-time">24–48 hours</td>
-                            <td class="ont-benefit">Population-scale NICU screening</td>
-                        </tr>
-                        <tr>
-                            <td>Clinical BAL → AMR</td>
-                            <td class="seqswift-time">58 seconds</td>
-                            <td class="industry-time">Days</td>
-                            <td class="ont-benefit">Outbreak response, field deployment</td>
-                        </tr>
-                        <tr>
-                            <td>GRCh38 Index Build</td>
-                            <td class="seqswift-time">25 minutes</td>
-                            <td class="industry-time">Days on cluster</td>
-                            <td class="ont-benefit">Offline setup, no cloud dependency</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="benchmark-note">All benchmarks validated on Walmart Chromebook — Sub-second Diagnostics, Offline, Decentralized — Everywhere</p>
-        </div>
+  </div>
+</section>
 
-        <div class="video-section">
-            <h3>🎬 Watch SeqSwift Build GRCh38 Live on a Chromebook</h3>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/8Gh9rmjArLw" 
-                    title="SeqSwift Demo" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <p style="margin-top: 20px; color: #888; text-align: center;">
-                Full GRCh38 genome → 739 MB 2-bit index built in 25 min on $140 Chromebook
-            </p>
-        </div>
+<!-- 5. GET STARTED -->
+<div class="section-dark">
+  <section>
+    <div class="get-started">
+      <h2>📧 Get Started</h2>
+      <p>Ready to evaluate SeqSwift? Here's how it works:</p>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><span>Download the encrypted pilot from the GitHub release</span></div>
+        <div class="step"><span class="step-num">2</span><span>Email david@seqswift.com with your use case and institution</span></div>
+        <div class="step"><span class="step-num">3</span><span>Receive your GPG passphrase directly — no bots, no forms</span></div>
+        <div class="step"><span class="step-num">4</span><span>Decrypt and run on any Linux/ChromeOS/macOS/WSL device</span></div>
+      </div>
+      <a href="mailto:david@seqswift.com" class="btn btn-red">Email david@seqswift.com →</a>
+    </div>
+  </section>
+</div>
 
-        <h2>📦 Available Pilots (v1.13 - Crostini Killer Edition)</h2>
-        
-        <div class="pilots-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pilot</th>
-                        <th>Target</th>
-                        <th>Performance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="background:#300; color:#0ff;">
-                        <td><strong>NK Cell Attenuation + MHC-I Downregulation</strong></td>
-                        <td>Full Genome Immune Evasion Panel</td>
-                        <td style="color:#0f0;"><strong>0.042 s</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #0f0;">GRCh38</strong></td>
-                        <td>Full Human Genome (3.1B bases)</td>
-                        <td style="color: #0f0;">25 min build / 58s chr22</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #0f0;">E. coli</strong></td>
-                        <td>Complete Genome (4.6 Mbp)</td>
-                        <td style="color: #0f0;">0.016 seconds</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #f0f;">E. coli AMR</strong></td>
-                        <td>AMR Detection + Clinical Insight (103 real MinION FASTQ files)</td>
-                        <td style="color: #f0f;"><strong>2.48 s</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #0f0;">HPV16</strong></td>
-                        <td>Single Oncology Panel</td>
-                        <td style="color: #0f0;">0.004 seconds</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #0f0;">HPV16+18</strong></td>
-                        <td>Combined Panel (3.45M mutations)</td>
-                        <td style="color: #0f0;">0.0007s</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #0f0;">SARS-CoV-2</strong></td>
-                        <td>Variants Analysis</td>
-                        <td style="color: #0f0;">0.008 seconds</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #0f0;">VHL</strong></td>
-                        <td>Hereditary Cancer Panel</td>
-                        <td style="color: #0f0;">0.006 seconds</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="pilot-cards">
-            <!-- NK CARD -->
-            <div class="pilot-card">
-                <h4>NK Cell Attenuation + MHC-I Downregulation</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --immune-evasion grch38</span>
-                    <span class="pilot-time-value">0.042 s</span>
-                    <span class="pilot-time-vs">↑ Industry (GATK): 6–24 hours</span>
-                </div>
-                <div class="vs-industry">vs. <span>days on cloud cluster</span></div>
-                <div class="pilot-description">
-                    Full GRCh38.p14 (3.1B bases) + 50M variants from TCGA/GEO. Maps immune evasion hotspots (MHC-I downregulation, NK attenuation) for cancer and viral escape.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Genome Size:</strong> 3.1B bases</p>
-                    <p><strong>Variants:</strong> 50M</p>
-                    <p><strong>RAM Peak:</strong> 489 MB</p>
-                    <p class="sha">SHA256:<br>47f3e04c9c6195dea32e2652db7599fb28078c5229dcc4e15d32d216aad7e1ae</p>
-                </div>
-                <a href="future-b-nk.enc" download class="btn btn-primary">Download 5.9 KB Pilot</a>
-            </div>
+<!-- 6. GLOBAL HEALTH + TEAM -->
+<section>
+  <h2>🌱 Why We Built This</h2>
+  <div class="origin">
+    <p>During a family-medicine clerkship, the young daughter of his preceptor died of an overwhelming infection that rapid diagnostics might have caught sooner. Close friends from Kenya lost patients to late-diagnosed sepsis and resistant pathogens.</p>
+    <p class="tagline">No big lab. No big budget.<br>Just code that refuses to let the next child wait.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <h3>Dave Schliemann, MD</h3>
+      <span class="role">Founder &amp; CEO</span>
+      <p>Physician and systems programmer (MIT 6.001x). Built sub-second bedside sequencing that runs on a $140 edge device — in a Level-I trauma bay or a rural Kenyan ward. Patent-pending (63/187,188).</p>
+    </div>
+    <div class="team-card">
+      <h3>Dr. Boss Opiyo, MD</h3>
+      <span class="role">VP, Global Partnerships</span>
+      <p>Medical resident at UNC Greenville with UN-level global health experience. Bridges cutting-edge genomic technology and real-world deployment in resource-limited settings across Sub-Saharan Africa.</p>
+    </div>
+  </div>
+</section>
 
-            <div class="pilot-card">
-                <h4>GRCh38 - Full Human Genome</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --build grch38</span>
-                    <span class="pilot-time-value">25 min build / 58 s chr22</span>
-                    <span class="pilot-time-vs">↑ Industry: Days on cluster</span>
-                </div>
-                <div class="vs-industry">vs. <span>days on cluster</span></div>
-                <div class="pilot-description">
-                    Full human reference genome (3.099 billion bases) built live on a $140 Chromebook. Powers clinical-grade analysis with chromosome 22 queries in 58 seconds and sepsis rule-out in 0.012 seconds.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Size:</strong> 3.1B bases → 739 MB 2-bit index</p>
-                    <p><strong>Platform:</strong> Chromebook (Crostini Linux)</p>
-                    <p><strong>Use Case:</strong> Clinical diagnostics, research genomics</p>
-                    <p><strong>Hardware:</strong> Verified on $140 Chromebook</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn btn-primary">Download GRCh38 v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🦠 E. coli AMR - Antibiotic Resistance Profiling</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --amr ecoli_103_minion.fastq</span>
-                    <span class="pilot-time-value">2.48 s</span>
-                    <span class="pilot-time-vs">↑ Industry (GATK/cloud): 24–72 hours</span>
-                </div>
-                <div class="vs-industry">vs. <span>24–72 hours</span> (cloud pipeline)</div>
-                <div class="pilot-description">
-                    Real-world AMR detection + clinical insight recommendations on 103 real MinION FASTQ files from E. coli clinical isolates. gyrA resistance detected in 55% of files — clinical output: prescribe aminoglycoside. Identifies fluoroquinolone resistance mutations (gyrA S83L, parC S80I) from Oxford Nanopore long-read data.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Input:</strong> 103 real MinION FASTQ files</p>
-                    <p><strong>Detection:</strong> gyrA S83L — 55% file-level match rate</p>
-                    <p><strong>Clinical Output:</strong> Prescribe aminoglycoside recommendation</p>
-                    <p><strong>Resistance:</strong> Fluoroquinolone markers (gyrA, parC)</p>
-                    <p><strong>Use Case:</strong> Clinical diagnostics, outbreak surveillance</p>
-                    <p><strong>Hardware:</strong> Verified on $140 Chromebook</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn btn-primary">Download E. coli AMR v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🦠 E. coli - Complete Genome</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --profile ecoli.fastq</span>
-                    <span class="pilot-time-value">0.016 s</span>
-                    <span class="pilot-time-vs">↑ Industry: Hours</span>
-                </div>
-                <div class="vs-industry">vs. <span>hours</span> (BWA/GATK)</div>
-                <div class="pilot-description">
-                    Complete E. coli genome analysis (4.6 Mbp). Perfect for microbiology research, antibiotic resistance studies, and educational demonstrations of rapid pathogen identification.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Genome Size:</strong> 4.6 Mbp</p>
-                    <p><strong>Analysis Time:</strong> 16 milliseconds</p>
-                    <p><strong>Use Case:</strong> Microbial genomics, AMR research</p>
-                    <p><strong>Applications:</strong> Outbreak tracking, strain identification</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download E. coli v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🎗️ HPV16 - Single Oncology Panel</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --hpv16 sample.fastq</span>
-                    <span class="pilot-time-value">0.004 s</span>
-                    <span class="pilot-time-vs">↑ Industry: 4–8 hours</span>
-                </div>
-                <div class="vs-industry">vs. <span>4–8 hours</span> (standard lab)</div>
-                <div class="pilot-description">
-                    Human Papillomavirus type 16 oncology panel. Critical for cervical cancer screening and HPV-related cancer research. The most common HPV strain in cervical cancer cases.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Target:</strong> HPV16 genome</p>
-                    <p><strong>Analysis Time:</strong> 4 milliseconds</p>
-                    <p><strong>Use Case:</strong> Cancer diagnostics, HPV screening</p>
-                    <p><strong>Clinical Impact:</strong> Point-of-care screening</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download HPV16 v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🎗️ HPV16+18 - Combined Panel</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --hpv1618 sample.fastq</span>
-                    <span class="pilot-time-value">0.007 s</span>
-                    <span class="pilot-time-vs">↑ Industry: 4–8 hours</span>
-                </div>
-                <div class="vs-industry">vs. <span>4–8 hours</span> — 3.45M mutations</div>
-                <div class="pilot-description">
-                    Combined HPV16 and HPV18 panel covering the two most oncogenic HPV strains responsible for 70% of cervical cancers. Processes 3.45 million mutations in under a millisecond.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Throughput:</strong> 3.45M mutations analyzed</p>
-                    <p><strong>Analysis Time:</strong> 7 milliseconds</p>
-                    <p><strong>Use Case:</strong> Comprehensive HPV screening</p>
-                    <p><strong>Coverage:</strong> 70% of cervical cancer cases</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download HPV16+18 v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🧬 Sickle Cell (HBB) - Newborn Screening</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --hbb patient.fastq</span>
-                    <span class="pilot-time-value">0.041 s · single &nbsp;|&nbsp; 2 s · 1,000 patients</span>
-                    <span class="pilot-time-vs">↑ Industry: 45–90 min / 24–48 hrs (batch)</span>
-                </div>
-                <div class="vs-industry">vs. <span>45–90 minutes</span> per patient (standard)</div>
-                <div class="pilot-description">
-                    Hemoglobin beta gene panel for rapid sickle cell disease screening. Detects 337 pathogenic variants including rs334 (HbS mutation). Single-patient triage in 41ms or batch screening of 1,000 newborns (9,000 reads) in 2 seconds.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Target:</strong> HBB gene locus (337 pathogenic variants)</p>
-                    <p><strong>Single Mode:</strong> 41 milliseconds per patient</p>
-                    <p><strong>Batch Mode:</strong> 1,000 patient cohort ~ 2 seconds</p>
-                    <p><strong>Use Cases:</strong> Bedside triage, population screening</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download HBB v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🦠 SARS-CoV-2 - Variants Analysis</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --sars2 sample.fastq</span>
-                    <span class="pilot-time-value">0.008 s</span>
-                    <span class="pilot-time-vs">↑ Industry: Hours to days</span>
-                </div>
-                <div class="vs-industry">vs. <span>hours</span> (standard variant calling)</div>
-                <div class="pilot-description">
-                    COVID-19 variants analysis panel. Enables rapid identification of SARS-CoV-2 strains and mutations for epidemiological surveillance and outbreak response.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Target:</strong> SARS-CoV-2 genome &amp; variants</p>
-                    <p><strong>Analysis Time:</strong> 8 milliseconds</p>
-                    <p><strong>Use Case:</strong> Pandemic surveillance, variant tracking</p>
-                    <p><strong>Applications:</strong> Real-time outbreak monitoring</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download SARS-CoV-2 v1.13</a>
-            </div>
-
-            <div class="pilot-card">
-                <h4>🧬 VHL - Hereditary Cancer Panel</h4>
-                <div class="pilot-time">
-                    <span class="pilot-time-label">$ time ./seqswift --vhl patient.fastq</span>
-                    <span class="pilot-time-value">0.006 s</span>
-                    <span class="pilot-time-vs">↑ Industry: 4–8 hours</span>
-                </div>
-                <div class="vs-industry">vs. <span>hours to days</span> (standard)</div>
-                <div class="pilot-description">
-                    Von Hippel-Lindau hereditary cancer panel. Essential for identifying mutations linked to kidney cancer, hemangioblastomas, pheochromocytomas, and other VHL-associated tumors.
-                </div>
-                <div class="pilot-specs">
-                    <p><strong>Target:</strong> VHL gene locus</p>
-                    <p><strong>Analysis Time:</strong> 6 milliseconds</p>
-                    <p><strong>Use Case:</strong> Hereditary cancer screening</p>
-                    <p><strong>Risk Assessment:</strong> Family screening programs</p>
-                </div>
-                <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" class="btn">Download VHL v1.13</a>
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- HOW TO ACCESS                                               -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <div class="access-section">
-            <h2>🔐 How to Access</h2>
-            
-            <h3>Step 1: Download</h3>
-            <p style="color: #ccc; margin: 15px 0;">
-                Click on any pilot's download button above or visit the <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" style="color: #0ff;">v1.13 release page</a> directly.
-            </p>
-
-            <h3>Step 2: Request Decryption Passphrase</h3>
-            <p style="color: #ccc; margin: 15px 0;">
-                Email <a href="mailto:david@seqswift.com" style="color: #0ff;">david@seqswift.com</a> with:
-            </p>
-            <ul>
-                <li>Subject: decrypt</li>
-                <li>Which pilot you want to evaluate</li>
-                <li>Brief context: Your use case or research interest</li>
-            </ul>
-            <p style="margin-top: 15px; color: #888; font-style: italic;">
-                Why we ask: We're learning from early users to align future development. Your feedback directly shapes the roadmap.
-            </p>
-
-            <h3>Step 3: Decrypt &amp; Run</h3>
-            <div class="code-block">
-                <code>
-# Example decryption (passphrase provided via email)<br>
-gpg --decrypt SeqSwift_GRCh38_BOOM_v1.13.zip.gpg > SeqSwift_GRCh38_BOOM_v1.13.zip<br>
-unzip SeqSwift_GRCh38_BOOM_v1.13.zip<br>
-cd SeqSwift_GRCh38_BOOM_v1.13<br>
-./seqswift --help
-                </code>
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- WHO SHOULD REQUEST ACCESS                                   -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <h2>🎯 Who Should Request Access?</h2>
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>🔬 Research Labs</h4>
-                <p style="color: #ccc; margin: 15px 0;">Evaluating genomic analysis tools for academic or clinical research projects.</p>
-            </div>
-            <div class="feature-box">
-                <h4>🏥 Clinical Facilities</h4>
-                <p style="color: #ccc; margin: 15px 0;">Exploring diagnostic workflows and precision medicine applications.</p>
-            </div>
-            <div class="feature-box">
-                <h4>💻 Bioinformatics Teams</h4>
-                <p style="color: #ccc; margin: 15px 0;">Benchmarking performance against existing genomic pipelines.</p>
-            </div>
-            <div class="feature-box">
-                <h4>🎓 Academic Institutions</h4>
-                <p style="color: #ccc; margin: 15px 0;">Teaching computational genomics and bioinformatics courses.</p>
-            </div>
-            <div class="feature-box">
-                <h4>🛠️ Developers</h4>
-                <p style="color: #ccc; margin: 15px 0;">Building on genomic infrastructure and creating new analysis tools.</p>
-            </div>
-            <div class="feature-box">
-                <h4>🌍 Global Health</h4>
-                <p style="color: #ccc; margin: 15px 0;">Resource-limited settings needing accessible genomic analysis.</p>
-            </div>
-        </div>
-
-        <h2>🎁 Free Access Programs</h2>
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>1️⃣ First 100 Labs</h4>
-                <p style="color: #ccc; margin: 15px 0;">Free pilot access in exchange for testimonial/feedback. Help shape the future of genomic analysis.</p>
-            </div>
-            <div class="feature-box">
-                <h4>2️⃣ Lifetime License Draw</h4>
-                <p style="color: #ccc; margin: 15px 0;">3 lifetime licenses randomly awarded weekly to users who provide feedback on their experience.</p>
-            </div>
-            <div class="feature-box">
-                <h4>3️⃣ Academic/Non-Profit</h4>
-                <p style="color: #ccc; margin: 15px 0;">Educational licenses available on request for teaching and non-commercial research.</p>
-            </div>
-        </div>
-
-        <h2>⚡ Why SeqSwift?</h2>
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>🚀 Speed Without Compromise</h4>
-                <ul>
-                    <li>Sub-millisecond analysis on consumer hardware</li>
-                    <li>No GPU required</li>
-                    <li>No cloud dependencies</li>
-                    <li>No Docker containers</li>
-                    <li>Runs on $140 Chromebook</li>
-                </ul>
-            </div>
-            <div class="feature-box">
-                <h4>🔒 Privacy-First Architecture</h4>
-                <ul>
-                    <li>Your data never leaves your machine</li>
-                    <li>No telemetry</li>
-                    <li>No phone-home</li>
-                    <li>No accounts required</li>
-                    <li>Encrypted pilots protect IP</li>
-                </ul>
-            </div>
-            <div class="feature-box">
-                <h4>✅ Production-Ready</h4>
-                <ul>
-                    <li>Full pipeline in &lt;9 seconds</li>
-                    <li>Battle-tested on clinical datasets</li>
-                    <li>Patent-pending (63/187,188)</li>
-                    <li>Verified on multiple platforms</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2>🔬 Technical Details</h2>
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>System Requirements</h4>
-                <ul>
-                    <li><strong style="color: #0ff;">OS:</strong> Linux, macOS, ChromeOS, Windows (WSL)</li>
-                    <li><strong style="color: #0ff;">RAM:</strong> 512 MB minimum (489 MB peak tested)</li>
-                    <li><strong style="color: #0ff;">Storage:</strong> &lt;100 MB per pilot (739 MB for GRCh38)</li>
-                    <li><strong style="color: #0ff;">CPU:</strong> Any modern processor (no GPU required)</li>
-                </ul>
-            </div>
-            <div class="feature-box">
-                <h4>Input/Output Formats</h4>
-                <p style="color: #ccc; margin: 10px 0;"><strong style="color: #0ff;">Input:</strong></p>
-                <ul>
-                    <li>FASTA</li>
-                    <li>FASTQ</li>
-                    <li>VCF</li>
-                    <li>Custom reports</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2>🚨 Limited Availability</h2>
-        <div class="access-section" style="border-color: #f00;">
-            <p style="font-size: 1.2em; color: #f00; margin-bottom: 20px;">
-                <strong>Passphrase issued by direct request only — email <a href="mailto:david@seqswift.com" style="color: #f00;">david@seqswift.com</a> with your use case.</strong>
-            </p>
-            <p style="color: #ccc; margin: 15px 0;">
-                This scarcity protects our patent-pending technology while we finalize commercial licensing.
-            </p>
-            <h3>Why So Few?</h3>
-            <ul>
-                <li><strong style="color: #0ff;">IP Protection:</strong> Provisional patent filed, full patent pending</li>
-                <li><strong style="color: #0ff;">Quality Control:</strong> We personally support each pilot user</li>
-                <li><strong style="color: #0ff;">Feedback Loop:</strong> Deep engagement with early adopters shapes the product</li>
-                <li><strong style="color: #0ff;">Market Validation:</strong> Testing pricing and licensing models</li>
-            </ul>
-        </div>
-
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- GET STARTED — FIXED EMAIL BUTTON                           -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <h2>📧 Get Started</h2>
-        <div style="text-align: center; margin: 40px auto; max-width: 600px;">
-            <p style="color: #fff; font-size: 1.2em; margin-bottom: 30px;">
-                Ready to evaluate SeqSwift?
-            </p>
-            <a href="mailto:david@seqswift.com" class="btn btn-primary" style="width: auto; display: inline-block; padding: 20px 50px; font-size: 1.3em;">
-                Email Me
-            </a>
-        </div>
-
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- THE TEAM — dark terminal aesthetic                         -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <h2>👨‍⚕️ The Team</h2>
-        <div class="team-section">
-            <div class="team-grid">
-
-                <div class="team-card">
-                    <h3>Dave Schliemann, MD</h3>
-                    <span class="team-role">Founder &amp; CEO</span>
-                    <hr class="team-divider">
-                    <p>
-                        A fourth-year international medical graduate completing clinical training in the United States. 
-                        Self-taught in systems programming (MIT 6.001 via MITx), with prior contributions to the 
-                        <em>Journal of Visualized Experiments (JoVE)</em> and technology analysis at Forrester Research 
-                        in Cambridge. Moved to Atlanta in 2024 to build sub-second, bedside-ready sequencing that 
-                        runs on a $140 edge device — in a Level-I trauma bay or a rural Kenyan ward.
-                    </p>
-                </div>
-
-                <div class="team-card">
-                    <h3>Dr. Boss Opiyo, MD</h3>
-                    <span class="team-role">VP, Global Partnerships</span>
-                    <hr class="team-divider">
-                    <p>
-                        A medical resident at UNC Greenville bringing clinical validation expertise and a global 
-                        health perspective forged through UN experience. Bridges the gap between cutting-edge 
-                        genomic technology and real-world deployment in resource-limited settings across Sub-Saharan 
-                        Africa and beyond.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- ABOUT THE FOUNDER                                           -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <h2>🌱 Origin Story</h2>
-        <div class="access-section" style="border-color: #0f0; max-width: 900px;">
-            <p style="color: #ccc; line-height: 1.9; margin: 20px 0;">
-                During a recent family-medicine clerkship, the young daughter of his preceptor – a little girl he 
-                and the team cared for together in clinic – died of an overwhelming infection that rapid diagnostics 
-                might have caught sooner. At the same time, several close friends and former colleagues from Kenya 
-                lost patients and family members to late-diagnosed sepsis and resistant pathogens.
-            </p>
-            <p style="color: #ccc; line-height: 1.9; margin: 20px 0;">
-                Those two losses made the mission personal: <strong style="color: #0f0; text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);">no child, anywhere, should die because a genomic result took days instead of seconds.</strong>
-            </p>
-            <p style="color: #0f0; font-size: 1.3em; text-align: center; margin-top: 30px; line-height: 1.6; text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);">
-                No big lab. No big budget.<br>
-                Just code that refuses to let the next child wait.
-            </p>
-        </div>
-
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- LINKS                                                       -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <h2>🌐 Links</h2>
-        <div style="text-align: center; margin: 40px 0;">
-            <p style="color: #ccc; line-height: 2;">
-                <strong style="color: #0ff;">Website:</strong> <a href="https://seqswift.com/" style="color: #0f0;">seqswift.com</a><br>
-                <strong style="color: #0ff;">Main Repo:</strong> <a href="https://github.com/daveschliemann/seqswift-pilots/releases/tag/v1.13-crostini-killer" style="color: #0f0;">SeqSwift-LiteSpeed</a><br>
-                <strong style="color: #0ff;">X/Twitter:</strong> <a href="https://twitter.com/schlayguy" style="color: #0f0;">@schlayguy</a><br>
-                <strong style="color: #0ff;">Contact:</strong> <a href="mailto:david@seqswift.com" style="color: #0f0;">david@seqswift.com</a>
-            </p>
-        </div>
-
-    </div><!-- /container -->
-
-    <footer>
-        <p style="color: #0ff; font-size: 1.5em; font-weight: bold; text-align: center; margin: 40px 0 30px; line-height: 1.4;">
-            Sepsis kills in minutes.<br>
-            GATK takes hours.<br>
-            <span style="color: #0f0;">SeqSwift answers in milliseconds.</span>
-        </p>
-        <p style="color: #ccc; font-size: 1.1em; text-align: center; margin: 20px 0;">
-            ⚡ No cloud &bull; No Docker &bull; No GPU &bull; Free for all academic &amp; non-profit use
-        </p>
-        <p style="color: #888; text-align: center; margin: 10px 0;">
-            Encrypted pilots &bull; Open-source core &bull; Patent pending (63/187,188)
-        </p>
-        <p style="color: #666; text-align: center; margin: 10px 0;">
-            &copy; 2026 SeqSwift &bull; <a href="mailto:david@seqswift.com">david@seqswift.com</a>
-        </p>
-    </footer>
-
-    <script>
-        // Glow-pulse cards on scroll into view
-        const cards = document.querySelectorAll('.pilot-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.boxShadow = '0 0 40px rgba(0,255,255,0.35)';
-                    entry.target.style.borderColor = '#0ff';
-                    // Animate the time text
-                    const timeEl = entry.target.querySelector('.pilot-time');
-                    if (timeEl && !timeEl.dataset.animated) {
-                        timeEl.dataset.animated = 'true';
-                        timeEl.style.transition = 'text-shadow 0.6s ease, color 0.6s ease';
-                        timeEl.style.color = '#0ff';
-                        timeEl.style.textShadow = '0 0 20px rgba(0,255,255,1), 0 0 60px rgba(0,255,255,0.7), 0 0 100px rgba(0,255,255,0.4)';
-                        setTimeout(() => {
-                            timeEl.style.color = '#fff';
-                            timeEl.style.textShadow = '0 0 10px rgba(0,255,255,0.9), 0 0 30px rgba(0,255,255,0.5), 0 0 60px rgba(0,255,255,0.2)';
-                        }, 700);
-                    }
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        cards.forEach(card => observer.observe(card));
-    </script>
+<!-- FOOTER -->
+<footer>
+  <p class="tagline">Sepsis kills in minutes. GATK takes hours. SeqSwift answers in milliseconds.</p>
+  <p>No cloud · No Docker · No GPU · Patent pending (63/187,188)</p>
+  <p style="margin-top:8px">© 2026 SeqSwift · <a href="mailto:david@seqswift.com" style="color:#0ff">david@seqswift.com</a> · <a href="https://github.com/daveschliemann/seqswift-pilots" style="color:#0ff">GitHub</a> · <a href="https://twitter.com/schlayguy" style="color:#0ff">@schlayguy</a></p>
+</footer>
 
 </body>
 </html>
